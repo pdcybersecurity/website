@@ -19,30 +19,30 @@
   </div>
 
   <!-- Topbar Header -->
-  <div class="topbar">
+  <header class="topbar" role="banner">
     <img src="logo.png" alt="Logo PDC" class="topbar-logo" />
     <div class="topbar-contact">
-      <a href="mailto:pdc_cybersecurity@protonmail.com">pdc_cybersecurity@protonmail.com</a>
+      <a href="mailto:pdc_cybersecurity@protonmail.com"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:20px;vertical-align:-3px;">mail</span> pdc_cybersecurity@protonmail.com</a>
       <span>|</span>
-      <a href="https://t.me/pdcybersec" target="_blank" rel="noopener">@pdcybersec (Telegram)</a>
+      <a href="https://t.me/pdcybersec" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:20px;vertical-align:-3px;">send</span> @pdcybersec (Telegram)</a>
     </div>
     <div class="topbar-agency">
       PDC <span>[private detection & ciberintelligence]</span>
     </div>
-  </div>
+  </header>
 
   <!-- Hero Principal -->
-  <header class="hero">
+  <section class="hero" id="inicio" role="region" aria-label="Sección principal">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Investigación y <span>Ciberinteligencia</span> sin límites</h1>
       <p>Sabemos dónde buscar. Sabemos qué encontrar. Sabemos cómo protegerte.</p>
-      <a href="https://wa.me/529844183372" class="btn btn-primary hero-cta" target="_blank" rel="noopener">Descubre la verdad — Contáctanos</a>
+      <a href="https://wa.me/529844183372" class="btn btn-primary hero-cta" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:20px;vertical-align:-5px;">chat</span> Descubre la verdad — Contáctanos</a>
     </div>
-  </header>
+  </section>
 
   <!-- Servicios -->
-  <section class="services section">
+  <section class="services section" id="servicios" aria-label="Servicios">
     <h2>Nuestros Servicios</h2>
     <div class="services-grid">
       <div class="service-block">
@@ -84,7 +84,7 @@
   </section>
 
   <!-- Diferenciales -->
-  <section class="differentials section">
+  <section class="differentials section" id="diferenciales" aria-label="Diferenciales">
     <div class="differentials-inner">
       <h2>Expertos en <span>verdad</span>, <span>tecnología</span> y <span>discreción</span>.</h2>
       <ul>
@@ -97,24 +97,24 @@
   </section>
 
   <!-- CTA Final -->
-  <section class="cta-final section">
+  <section class="cta-final section" id="contacto" aria-label="Contactar">
     <div class="cta-final-inner">
       <h2>Toma la decisión hoy.<br>Descubre la verdad.<br><span>Protege lo tuyo.</span></h2>
-      <a href="https://wa.me/529844183372" class="btn btn-accent cta-btn" target="_blank" rel="noopener">Contactar ahora</a>
+      <a href="https://wa.me/529844183372" class="btn btn-accent cta-btn" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:20px;vertical-align:-4px;">chat</span> Contactar ahora</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-content">
       <div class="footer-agency">
         <img src="logo.png" alt="Logo PDC [private detection & ciberintelligence]" class="footer-logo" />
         <strong>PDC [private detection & ciberintelligence]</strong>
       </div>
       <div class="footer-contact">
-        <a href="mailto:pdc_cybersecurity@protonmail.com">pdc_cybersecurity@protonmail.com</a>
+        <a href="mailto:pdc_cybersecurity@protonmail.com"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px;vertical-align:-3px;">mail</span> pdc_cybersecurity@protonmail.com</a>
         <span>|</span>
-        <a href="https://t.me/pdcybersec" target="_blank" rel="noopener">@pdcybersec (Telegram)</a>
+        <a href="https://t.me/pdcybersec" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px;vertical-align:-3px;">send</span> @pdcybersec (Telegram)</a>
       </div>
       <p class="footer-phrase">Confidencialidad absoluta. Resultados reales.</p>
       <div class="footer-social">
@@ -141,6 +141,32 @@
     <span class="material-symbols-outlined" style="font-size: 32px;">chat</span>
   </a>
 
-  <script src="main.js"></script>
+  <script>
+    // Preloader simple: se oculta al cargar la página
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) preloader.classList.add('fade-out');
+      }, 800);
+    });
+
+    // Animación de aparición para bloques de servicio al hacer scroll
+    function revealServiceBlocks() {
+      const blocks = document.querySelectorAll('.service-block');
+      const trigger = window.innerHeight * 0.9;
+      blocks.forEach(block => {
+        const top = block.getBoundingClientRect().top;
+        if (top < trigger) block.classList.add('in-view');
+      });
+    }
+    window.addEventListener('scroll', revealServiceBlocks);
+    window.addEventListener('DOMContentLoaded', revealServiceBlocks);
+
+    // Accesibilidad: scroll a sección si hash
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({behavior: 'smooth'});
+    }
+  </script>
 </body>
 </html>
