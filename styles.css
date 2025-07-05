@@ -57,7 +57,16 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
 .topbar-contact a { color: var(--subtext); font-size: .98rem; font-weight: 400;}
 .topbar-contact a:hover { color: var(--text);}
 .topbar-agency {
-  font-weight:400; font-size:8.01rem; color:var(--text); letter-spacing:0.08em; text-align:right;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: var(--text);
+  letter-spacing: 0.10em;
+  text-align: right;
+  min-width: 190px;
+  text-shadow: 0 1px 2px #15192233;
+  font-stretch: expanded;
+  line-height: 1.2;
+  font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
 }
 .sep { color: #222; font-weight: 400; font-size: 1.1em; }
 .hero {
