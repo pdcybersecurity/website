@@ -7,26 +7,26 @@ import ServiceContent from '../components/ServiceContent.astro';
 import Footer from '../components/Footer.astro';
 
 const features = [
-  "🛰️ Rastreos digitales avanzados y geolocalización de precisión",
-  "📱 Seguimiento inteligente en redes sociales y plataformas digitales",
-  "🧠 Análisis predictivo de patrones de movilidad y contactos",
-  "🌐 Red global de expertos en campo e informantes especializados",
-  "📊 Reporte detallado del proceso y hallazgos con evidencia verificable"
+  "🛰️ <strong>Geolocalización Avanzada:</strong> Triangulación de señales, análisis de metadatos GPS y rastreo de dispositivos",
+  "📱 <strong>OSINT de Redes Sociales:</strong> Monitoreo de actividad digital, check-ins y patrones de comportamiento online",
+  "🧠 <strong>Análisis Predictivo:</strong> Modelado de patrones de movilidad y predicción de ubicaciones futuras",
+  "🌐 <strong>Red de Fuentes Humanas:</strong> Informantes especializados y contactos en campo a nivel internacional",
+  "📊 <strong>Reporte Operativo:</strong> Documentación completa del proceso con evidencia georreferenciada y timeline detallado"
 ];
 
-const description = "Combinamos inteligencia artificial, análisis de big data y métodos de investigación tradicional para localizar personas desaparecidas, deudores o familiares. Nuestro enfoque multicapa garantiza resultados donde otros métodos fallan, siempre con máxima discreción y respeto.";
+const description = "Empleamos una metodología híbrida que combina técnicas OSINT de última generación con trabajo de campo tradicional. Nuestros operadores utilizan herramientas de geolocalización militar, análisis de big data y una red global de fuentes humanas para localizar personas que otros consideran 'imposibles de encontrar'.";
 ---
 
 <Layout 
-  title="🎯 Localización de Personas Avanzada | PDC [private detection & ciberintelligence]"
-  description="Localización profesional de personas por PDC: rastreos digitales de última generación, análisis predictivo y seguimiento global. Confidencialidad total."
+  title="🎯 Rastreo y Localización Táctica | PDC [private detection & ciberintelligence]"
+  description="Localización profesional de personas: geolocalización avanzada, OSINT especializado y red global de operadores. Resultados donde otros fallan."
 >
   <Header />
-  <Breadcrumbs current="Localización de personas" />
+  <Breadcrumbs current="Rastreo y localización táctica" />
   <ServiceHero 
     icon="📍"
-    title="Localización de Personas Avanzada"
-    description="<strong>Encuentra a quien buscas</strong> con tecnología de vanguardia.<br>🛰️ <em>Rastreos globales de precisión</em> • ⚡ <em>Resultados en tiempo récord</em>"
+    title="Rastreo y Localización Táctica"
+    description="<strong>Encontramos a cualquier persona, en cualquier lugar</strong> del mundo.<br>🛰️ <em>Geolocalización militar</em> • 🌐 <em>Red global de operadores</em>"
     iconLabel="Localización y rastreo"
   />
   <ServiceContent features={features} description={description} />

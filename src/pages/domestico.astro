@@ -7,26 +7,26 @@ import ServiceContent from '../components/ServiceContent.astro';
 import Footer from '../components/Footer.astro';
 
 const features = [
-  "👨‍👩‍👧‍👦 Investigación especializada para casos de custodia y convivencia familiar",
-  "📋 Documentación legal de conductas y situaciones de riesgo para menores",
-  "🔍 Localización efectiva de familiares desaparecidos y deudores morosos",
-  "⚖️ Recolección de pruebas sólidas para procesos legales y defensas jurídicas",
-  "🤝 Acompañamiento personalizado y asesoría emocional durante el proceso"
+  "👨‍👩‍👧‍👦 <strong>Investigación de Custodia:</strong> Documentación legal de conductas parentales, evaluación de riesgos y protección de menores",
+  "📋 <strong>Recolección de Evidencia Legal:</strong> Vigilancia discreta, documentación fotográfica y testimonios verificables para procesos judiciales",
+  "🔍 <strong>Localización de Familiares:</strong> Búsqueda especializada de personas desaparecidas, deudores alimentarios y familiares perdidos",
+  "⚖️ <strong>Casos de Infidelidad:</strong> Investigación discreta con evidencia admisible para procesos de divorcio y separación",
+  "🤝 <strong>Acompañamiento Especializado:</strong> Asesoría legal, apoyo emocional y coordinación con abogados especializados"
 ];
 
-const description = "Nuestro servicio de casos familiares está diseñado específicamente para proteger tus intereses y los de tu familia, actuando siempre con la máxima sensibilidad, discreción y profesionalismo. Entendemos que cada situación familiar es única y requiere un enfoque personalizado.";
+const description = "Nuestro departamento de casos familiares maneja situaciones delicadas con la máxima sensibilidad y profesionalismo. Empleamos técnicas de investigación adaptadas específicamente para entornos familiares, garantizando la protección de menores y la recolección de evidencia sólida que respalda decisiones judiciales críticas para el bienestar familiar.";
 ---
 
 <Layout 
-  title="👨‍👩‍👧‍👦 Casos Familiares Especializados | PDC [private detection & ciberintelligence]"
-  description="Casos domésticos especializados: resolución de conflictos familiares, custodia, convivencia y protección integral con máxima confidencialidad."
+  title="👨‍👩‍👧‍👦 Investigación Familiar Especializada | PDC [private detection & ciberintelligence]"
+  description="Casos familiares especializados: custodia, infidelidad y protección de menores. Investigación sensible con evidencia legal sólida."
 >
   <Header />
-  <Breadcrumbs current="Casos domésticos" />
+  <Breadcrumbs current="Investigación familiar especializada" />
   <ServiceHero 
     icon="🏠"
-    title="Casos Familiares Especializados"
-    description="<strong>Protege lo que más amas</strong> con máxima sensibilidad.<br>👨‍👩‍👧‍👦 <em>Resolución de conflictos familiares</em> • 🤝 <em>Acompañamiento personalizado</em>"
+    title="Investigación Familiar Especializada"
+    description="<strong>Protege a tu familia con evidencia sólida</strong> y máxima sensibilidad.<br>👨‍👩‍👧‍👦 <em>Casos de custodia y protección</em> • 🤝 <em>Acompañamiento especializado</em>"
     iconLabel="Protección familiar"
   />
   <ServiceContent features={features} description={description} />
