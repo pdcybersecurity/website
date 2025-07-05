@@ -57,17 +57,20 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
 .topbar-contact a { color: var(--subtext); font-size: .98rem; font-weight: 400;}
 .topbar-contact a:hover { color: var(--text);}
 .topbar-agency {
+  font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
   font-weight: 300;
-  font-size: 1.6rem;
-  color: var(--text);
+  font-size: 1.32rem;
   letter-spacing: 0.10em;
+  color: var(--text);
   text-align: right;
-  min-width: 190px;
+  min-width: 140px;
+  line-height: 1.14;
   text-shadow: 0 1px 2px #15192233;
   font-stretch: expanded;
-  line-height: 1.2;
-  font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
+
 .sep { color: #222; font-weight: 400; font-size: 1.1em; }
 .hero {
   min-height: 50vh;
@@ -409,6 +412,14 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
   .floating-btn { width: 40px; height: 40px;}
 }
 @media (max-width: 370px) {
-  .topbar-agency { font-size: 0.87rem; }
   .footer-agency strong { font-size: 0.85rem;}
+}
+@media (max-width: 600px) {
+  .topbar-agency {
+    font-size: 1.05rem;
+    min-width: 100px;
+    letter-spacing: 0.08em;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
