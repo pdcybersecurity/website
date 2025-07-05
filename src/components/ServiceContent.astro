@@ -1,0 +1,25 @@
+---
+export interface Props {
+  features: string[];
+  description: string;
+}
+
+const { features, description } = Astro.props;
+---
+
+<section class="section" style="background:var(--surface-alt);padding-top:30px;">
+  <div style="max-width:600px;margin:0 auto;padding:0 2vw;">
+    <h2 style="color:var(--accent);margin-bottom:16px;">¿En qué consiste?</h2>
+    <ul style="color:var(--subtext);font-size:1.06rem;line-height:1.8;margin-bottom:24px;">
+      {features.map(feature => (
+        <li>&#10004; {feature}</li>
+      ))}
+    </ul>
+    <p style="margin-bottom:26px;">{description}</p>
+    <a href="https://wa.me/529844183372" class="btn hero-cta" style="margin-bottom:12px;display:inline-block;">&#128222; Solicitar este servicio</a>
+  </div>
+</section>
+
+<div style="text-align:center;margin:30px 0;">
+  <a href="/#servicios" style="color:var(--accent);background:var(--surface);padding:11px 24px;border-radius:var(--radius);text-decoration:none;font-weight:600;">&#8592; Volver a servicios</a>
+</div>

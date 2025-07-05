@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import ServiceContent from '../components/ServiceContent.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  "Análisis de amenazas internas y externas.",
+  "Prevención y detección de fugas de información.",
+  "Protección de la reputación digital y física.",
+  "Investigación de fraudes internos y sabotaje.",
+  "Asesoría en protocolos de compliance y seguridad."
+];
+
+const description = "Brindamos soluciones integrales a empresas, actuando con rapidez y sigilo para preservar la integridad y el valor de tu organización.";
+---
+
+<Layout 
+  title="Casos corporativos | PDC [private detection & ciberintelligence]"
+  description="Casos corporativos: Protección reputacional, compliance, análisis de amenazas internas y externas."
+>
+  <Header />
+  <Breadcrumbs current="Casos corporativos" />
+  <ServiceHero 
+    icon="&#128188;"
+    title="Casos corporativos"
+    description="Protección reputacional, compliance y análisis de amenazas internas.<br>Aliados de tu empresa."
+    iconLabel="Empresa"
+  />
+  <ServiceContent features={features} description={description} />
+  <Footer />
+</Layout>

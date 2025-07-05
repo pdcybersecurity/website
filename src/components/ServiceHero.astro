@@ -1,0 +1,19 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  iconLabel: string;
+}
+
+const { icon, title, description, iconLabel } = Astro.props;
+---
+
+<section class="hero" style="min-height: 30vh;">
+  <div class="hero-overlay"></div>
+  <div class="hero-content" style="text-align:center;max-width:500px;">
+    <div class="icon" aria-label={iconLabel} style="font-size:3rem;margin-bottom: 12px;">{icon}</div>
+    <h1 style="margin-bottom:10px;">{title}</h1>
+    <p style="font-size:1.18rem;" set:html={description}></p>
+  </div>
+</section>

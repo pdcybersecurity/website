@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import ServiceContent from '../components/ServiceContent.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  "Investigación para casos de custodia y convivencia.",
+  "Documentación de conductas y situaciones de riesgo.",
+  "Localización de familiares y deudores.",
+  "Pruebas para procesos legales y defensas jurídicas.",
+  "Acompañamiento y asesoría personalizada."
+];
+
+const description = "Nuestro servicio está enfocado en proteger tus intereses y los de tu familia, actuando siempre con sensibilidad y profesionalismo.";
+---
+
+<Layout 
+  title="Casos domésticos | PDC [private detection & ciberintelligence]"
+  description="Casos domésticos: resolución de conflictos familiares, custodia, convivencia y protección, con confidencialidad."
+>
+  <Header />
+  <Breadcrumbs current="Casos domésticos" />
+  <ServiceHero 
+    icon="&#128106;"
+    title="Casos domésticos"
+    description="Resolvemos conflictos familiares con total confidencialidad y respeto.<br>Apoyo integral."
+    iconLabel="Familia"
+  />
+  <ServiceContent features={features} description={description} />
+  <Footer />
+</Layout>

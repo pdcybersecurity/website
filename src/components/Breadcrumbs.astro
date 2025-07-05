@@ -1,0 +1,13 @@
+---
+export interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label="Ruta de navegación" style="padding: 16px 5vw 0 5vw;">
+  <a href="/" style="color:var(--accent);text-decoration:none;">Inicio</a> &rsaquo; 
+  <a href="/#servicios" style="color:var(--accent);text-decoration:none;">Servicios</a> &rsaquo; 
+  <span style="color:var(--subtext);">{current}</span>
+</nav>
