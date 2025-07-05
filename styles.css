@@ -57,7 +57,7 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
 .topbar-contact a { color: var(--subtext); font-size: .98rem; font-weight: 400;}
 .topbar-contact a:hover { color: var(--text);}
 .topbar-agency {
-  font-weight:600; font-size:1.01rem; color:var(--text); letter-spacing:0.08em; text-align:right;
+  font-weight:400; font-size:3.01rem; color:var(--text); letter-spacing:0.08em; text-align:right;
 }
 .sep { color: #222; font-weight: 400; font-size: 1.1em; }
 .hero {
