@@ -14,6 +14,7 @@
   --radius: 18px;
   --button-bg: linear-gradient(135deg, #232323 0%, #353945 50%, #4a5568 100%);
   --hero-gradient: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(19,19,19,0.85) 50%, rgba(24,24,24,0.95) 100%);
+  --icon-glow: 0 0 20px rgba(178, 187, 200, 0.3);
 }
 
 html, body {
@@ -242,11 +243,14 @@ a:hover, .btn:hover {
   }
 }
 
-/* BOTONES mejorados con efectos */
+/* BOTONES mejorados con efectos e iconos visibles */
 .hero-cta,
 .cta-btn,
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: fit-content;
   min-width: 0;
   max-width: 100%;
@@ -272,9 +276,17 @@ a:hover, .btn:hover {
   animation: fadeInUp 1s ease-out 0.9s both;
 }
 
+/* Iconos en botones más visibles */
 .hero-cta::before,
-.cta-btn::before,
-.btn::before {
+.cta-btn::before {
+  content: '📞';
+  font-size: 1.2em;
+  margin-right: 8px;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.btn::after {
   content: '';
   position: absolute;
   top: 0;
@@ -285,9 +297,9 @@ a:hover, .btn:hover {
   transition: left 0.5s;
 }
 
-.hero-cta:hover::before,
-.cta-btn:hover::before,
-.btn:hover::before {
+.hero-cta:hover::after,
+.cta-btn:hover::after,
+.btn:hover::after {
   left: 100%;
 }
 
@@ -388,17 +400,43 @@ a:hover, .btn:hover {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Iconos de servicios mejorados para máxima visibilidad */
 .service-block .icon {
   margin-bottom: 20px;
-  color: var(--accent-light);
-  font-size: 2.5rem;
+  color: #ffffff;
+  font-size: 3rem;
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease;
+  justify-content: flex-start;
+  transition: all 0.3s ease;
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.5),
+    0 0 20px rgba(178, 187, 200, 0.3),
+    0 2px 4px rgba(0,0,0,0.3);
+  filter: 
+    drop-shadow(0 0 8px rgba(255,255,255,0.4))
+    drop-shadow(0 0 15px rgba(178, 187, 200, 0.2));
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(178, 187, 200, 0.1) 100%);
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .service-block:hover .icon {
   transform: scale(1.1) rotate(5deg);
+  color: #ffffff;
+  text-shadow: 
+    0 0 15px rgba(255,255,255,0.8),
+    0 0 30px rgba(178, 187, 200, 0.5),
+    0 2px 4px rgba(0,0,0,0.3);
+  filter: 
+    drop-shadow(0 0 12px rgba(255,255,255,0.6))
+    drop-shadow(0 0 25px rgba(178, 187, 200, 0.4));
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(178, 187, 200, 0.2) 100%);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .service-block h3 {
@@ -514,18 +552,31 @@ a:hover, .btn:hover {
   color: var(--text);
 }
 
+/* Iconos de diferenciales mejorados */
 .diff-icon {
   display: inline-flex;
-  width: 24px; 
-  height: 24px;
+  width: 32px; 
+  height: 32px;
   justify-content: center; 
   align-items: center;
-  color: var(--accent-light);
-  font-size: 1.2em;
+  color: #ffffff;
+  font-size: 1.4em;
   margin-right: 4px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
   border-radius: 50%;
   flex-shrink: 0;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
+  filter: drop-shadow(0 0 6px rgba(178, 187, 200, 0.3));
+  border: 2px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.differentials li:hover .diff-icon {
+  background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+  color: var(--background);
+  transform: scale(1.1);
+  text-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
 .cta-final {
@@ -637,6 +688,7 @@ a:hover, .btn:hover {
   justify-content: center;
 }
 
+/* Iconos en footer más visibles */
 .footer-contact a {
   color: var(--subtext);
   text-decoration: none;
@@ -649,12 +701,32 @@ a:hover, .btn:hover {
   padding: 8px 12px;
   border-radius: 20px;
   background: rgba(255,255,255,0.02);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-contact a::before {
+  font-size: 1.1em;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+}
+
+.footer-contact a[href^="mailto"]::before {
+  content: '✉️';
+}
+
+.footer-contact a[href*="telegram"]::before {
+  content: '💬';
 }
 
 .footer-contact a:hover { 
   color: #fff;
   background: rgba(255,255,255,0.1);
   transform: translateY(-2px);
+}
+
+.footer-contact a:hover::before {
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
 }
 
 .footer-phrase {
@@ -682,44 +754,77 @@ a:hover, .btn:hover {
   background: rgba(255,255,255,0.1);
 }
 
+/* Botón flotante de WhatsApp mejorado */
 .floating-btn {
   position: fixed;
   right: 30px;
   bottom: 30px;
-  background: linear-gradient(135deg, var(--accent) 0%, #4a5568 100%);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #fff;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  width: 65px;
+  height: 65px;
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.3),
+    0 0 0 0 rgba(37, 211, 102, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 3px solid var(--background);
-  font-size: 1.5em;
-  animation: pulse 2s infinite;
+  font-size: 1.8em;
+  animation: whatsappPulse 2s infinite;
+  text-decoration: none;
 }
 
-@keyframes pulse {
+/* Icono de WhatsApp más visible */
+.floating-btn::before {
+  content: '📱';
+  font-size: 1.2em;
+  filter: 
+    drop-shadow(0 0 8px rgba(255,255,255,0.5))
+    drop-shadow(0 0 15px rgba(37, 211, 102, 0.3));
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.4),
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes whatsappPulse {
   0% {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 0 rgba(110, 122, 138, 0.7);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.3), 
+      0 0 0 0 rgba(37, 211, 102, 0.7);
   }
   70% {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 10px rgba(110, 122, 138, 0);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.3), 
+      0 0 0 15px rgba(37, 211, 102, 0);
   }
   100% {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 0 rgba(110, 122, 138, 0);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.3), 
+      0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
 
 .floating-btn:hover {
-  background: linear-gradient(135deg, #4a5568 0%, var(--accent-light) 100%);
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
   color: #fff;
-  transform: scale(1.1) rotate(-5deg);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 
+    0 15px 40px rgba(0,0,0,0.4),
+    0 0 20px rgba(37, 211, 102, 0.5);
   animation: none;
+}
+
+.floating-btn:hover::before {
+  filter: 
+    drop-shadow(0 0 12px rgba(255,255,255,0.8))
+    drop-shadow(0 0 25px rgba(37, 211, 102, 0.5));
+  text-shadow: 
+    0 0 15px rgba(255,255,255,0.6),
+    0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Responsive improvements */
@@ -751,6 +856,13 @@ a:hover, .btn:hover {
   }
   .differentials h2 {
     font-size: 1.8rem;
+  }
+  
+  /* Iconos más grandes en tablets */
+  .service-block .icon {
+    font-size: 3.5rem;
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -786,6 +898,20 @@ a:hover, .btn:hover {
   .hero { 
     min-height: 80vh; 
   }
+  
+  /* Iconos optimizados para móviles */
+  .service-block .icon {
+    font-size: 4rem;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 25px;
+  }
+  
+  .diff-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.6em;
+  }
 }
 
 @media (max-width: 500px) {
@@ -815,10 +941,11 @@ a:hover, .btn:hover {
     width: 24px;
   }
   .floating-btn { 
-    width: 50px; 
-    height: 50px;
+    width: 55px; 
+    height: 55px;
     right: 20px;
     bottom: 20px;
+    font-size: 1.6em;
   }
   .services h2 {
     font-size: 1.8rem;
@@ -826,11 +953,51 @@ a:hover, .btn:hover {
   .differentials h2 {
     font-size: 1.6rem;
   }
+  
+  /* Iconos extra grandes en móviles pequeños */
+  .service-block .icon {
+    font-size: 4.5rem;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+  }
+  
+  .diff-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.8em;
+  }
+  
+  /* Botones con iconos más visibles en móvil */
+  .hero-cta,
+  .cta-btn {
+    font-size: 1.2rem;
+    padding: 18px 35px;
+  }
+  
+  .hero-cta::before,
+  .cta-btn::before {
+    font-size: 1.4em;
+    margin-right: 10px;
+  }
 }
 
 @media (max-width: 370px) {
   .footer-agency strong { 
     font-size: 0.9rem;
+  }
+  
+  /* Iconos máximos para pantallas muy pequeñas */
+  .service-block .icon {
+    font-size: 5rem;
+    width: 110px;
+    height: 110px;
+  }
+  
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4em;
   }
 }
 
@@ -853,5 +1020,31 @@ a:hover, .btn:hover {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+/* Mejoras de accesibilidad para iconos */
+@media (prefers-contrast: high) {
+  .service-block .icon,
+  .diff-icon,
+  .floating-btn::before {
+    color: #ffffff !important;
+    text-shadow: 
+      0 0 5px rgba(0,0,0,0.8),
+      0 0 10px rgba(0,0,0,0.6) !important;
+    filter: 
+      drop-shadow(0 0 3px rgba(0,0,0,0.8))
+      drop-shadow(0 0 6px rgba(255,255,255,0.8)) !important;
+  }
+}
+
+/* Soporte para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  .service-block .icon,
+  .diff-icon {
+    color: #ffffff;
+    text-shadow: 
+      0 0 8px rgba(255,255,255,0.4),
+      0 0 15px rgba(178, 187, 200, 0.3);
   }
 }
