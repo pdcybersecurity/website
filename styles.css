@@ -93,7 +93,7 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
   position: relative;
   z-index: 2;
   color: var(--text);
-  text-align: left;
+  text-align: center;
   max-width: 500px;
   width: 100%;
   margin: 0 6vw;
