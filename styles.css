@@ -81,6 +81,13 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
   justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  /* Opcional: quita paddings/márgenes extras */
+  padding-left: 0;
+  padding-right: 0;
+}
 }
 .hero-content {
   position: relative;
