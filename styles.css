@@ -129,7 +129,7 @@ a:hover, .btn:hover {
   z-index: 2;
   color: var(--text);
   text-align: center;
-  max-width: 500px;
+  max-width: 800px;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
