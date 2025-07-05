@@ -466,8 +466,8 @@ a:hover, .btn:hover {
   .topbar-logo { width: 28px; height: 28px; }
 }
 @media (max-width: 500px) {
-  .hero-content h1 { font-size: 1.1rem; }
-  .hero-content p { font-size: 0.91rem; }
+  .hero-content h1 { font-size: 2.1rem; }
+  .hero-content p { font-size: 1.1rem; }
   .cta-final h2 { font-size: 1rem; }
   .service-block { padding: 12px 6px 12px; }
   .topbar-logo { width: 20px; height: 20px; }
