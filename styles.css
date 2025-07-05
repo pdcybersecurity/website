@@ -94,7 +94,7 @@ a:hover, .btn:hover {
 
 @media (max-width: 600px) {
   .topbar-agency {
-    font-size: 1.85rem;
+    font-size: 1.45rem;
     min-width: 100px;
     letter-spacing: 0.08em;
     padding-top: 3;
