@@ -130,7 +130,9 @@ a:hover, .btn:hover {
   color: var(--text);
   text-align: center;
   max-width: 500px;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   margin: 0 6vw;
   background: none;
   border-radius: var(--radius);
