@@ -120,6 +120,10 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
   margin-bottom: 30px;
   color: var(--subtext);
   line-height: 1.6;
+  text-align: justify;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 .hero-cta {
   font-size: 1.09rem;
@@ -135,9 +139,11 @@ a:hover, .btn:hover { color: #fff; background: var(--primary-hover); }
   text-decoration: none;
   letter-spacing: .01em;
   margin-top: 24px;
-  display: inline-block;
+  display: block;
   border: 1px solid #232323;
   box-shadow: 0 2px 10px #0003;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero-cta:hover {
   background: var(--primary-hover);
