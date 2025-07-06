@@ -1,0 +1,157 @@
+---
+---
+
+<section class="trust-section" style="background:var(--surface-alt);padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 4vw;">
+    <h2 style="text-align:center;color:var(--accent-light);margin-bottom:50px;font-size:2.2rem;font-weight:600;">
+      🛡️ <span style="color:#fff;">Confianza & Seguridad Garantizada</span>
+    </h2>
+    
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-bottom:60px;">
+      <!-- SSL & Seguridad -->
+      <div class="trust-card">
+        <div class="trust-icon">🔒</div>
+        <h3>Comunicación Encriptada</h3>
+        <p>Todas las comunicaciones protegidas con encriptación de grado militar. Tus datos están 100% seguros.</p>
+        <div class="trust-badge">✅ SSL 256-bit</div>
+      </div>
+      
+      <!-- Confidencialidad -->
+      <div class="trust-card">
+        <div class="trust-icon">🤐</div>
+        <h3>Confidencialidad Absoluta</h3>
+        <p>Acuerdos de no divulgación estrictos. Tu privacidad es nuestra prioridad número uno.</p>
+        <div class="trust-badge">✅ NDA Garantizado</div>
+      </div>
+      
+      <!-- Experiencia -->
+      <div class="trust-card">
+        <div class="trust-icon">🎯</div>
+        <h3>+500 Casos Resueltos</h3>
+        <p>Experiencia comprobada en investigación privada y ciberinteligencia a nivel internacional.</p>
+        <div class="trust-badge">✅ Resultados Verificables</div>
+      </div>
+      
+      <!-- Respuesta 24/7 -->
+      <div class="trust-card">
+        <div class="trust-icon">⚡</div>
+        <h3>Respuesta 24/7 Real</h3>
+        <p>Equipo disponible las 24 horas, los 7 días de la semana. Emergencias atendidas inmediatamente.</p>
+        <div class="trust-badge">✅ Soporte Global</div>
+      </div>
+    </div>
+    
+    <!-- Certificaciones y Badges -->
+    <div style="text-align:center;padding:40px 0;background:rgba(255,255,255,0.02);border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+      <h3 style="color:var(--accent-light);margin-bottom:30px;font-size:1.5rem;">🏆 Certificaciones Profesionales</h3>
+      <div style="display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;">
+        <div class="cert-badge">
+          <div style="font-size:2rem;margin-bottom:8px;">🔍</div>
+          <div style="font-size:0.9rem;color:var(--subtext);">Investigación<br>Privada</div>
+        </div>
+        <div class="cert-badge">
+          <div style="font-size:2rem;margin-bottom:8px;">🌐</div>
+          <div style="font-size:0.9rem;color:var(--subtext);">OSINT<br>Especializado</div>
+        </div>
+        <div class="cert-badge">
+          <div style="font-size:2rem;margin-bottom:8px;">🛡️</div>
+          <div style="font-size:0.9rem;color:var(--subtext);">Ciberseguridad<br>Avanzada</div>
+        </div>
+        <div class="cert-badge">
+          <div style="font-size:2rem;margin-bottom:8px;">⚖️</div>
+          <div style="font-size:0.9rem;color:var(--subtext);">Evidencia<br>Legal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.trust-card {
+  background: linear-gradient(135deg, var(--card) 0%, rgba(20, 20, 23, 0.8) 100%);
+  padding: 35px 25px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(110, 122, 138, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trust-card:hover::before {
+  opacity: 1;
+}
+
+.trust-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border: 2px solid var(--accent);
+}
+
+.trust-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.trust-card h3 {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.trust-card p {
+  color: var(--subtext);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.trust-badge {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: var(--background);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.cert-badge {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.cert-badge:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .trust-card {
+    padding: 25px 20px;
+  }
+  
+  .cert-badge {
+    min-width: 100px;
+    padding: 15px;
+  }
+}
+</style>

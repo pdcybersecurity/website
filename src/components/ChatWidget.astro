@@ -1,0 +1,515 @@
+---
+---
+
+<!-- Chat Widget Flotante -->
+<div id="chatWidget" class="chat-widget">
+  <div class="chat-header" onclick="toggleChat()">
+    <div class="chat-icon">💬</div>
+    <div class="chat-title">
+      <div>Chat Seguro PDC</div>
+      <div class="chat-status">🟢 En línea</div>
+    </div>
+    <div class="chat-toggle" id="chatToggle">−</div>
+  </div>
+  
+  <div class="chat-body" id="chatBody">
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <p>¡Hola! Soy el asistente virtual de PDC. ¿En qué puedo ayudarte hoy?</p>
+          <div class="message-time">Ahora</div>
+        </div>
+      </div>
+      
+      <div class="quick-options">
+        <button onclick="sendQuickMessage('Necesito una consulta urgente')" class="quick-btn">
+          🚨 Consulta Urgente
+        </button>
+        <button onclick="sendQuickMessage('Quiero información sobre precios')" class="quick-btn">
+          💰 Precios
+        </button>
+        <button onclick="sendQuickMessage('¿Qué servicios ofrecen?')" class="quick-btn">
+          🔍 Servicios
+        </button>
+        <button onclick="sendQuickMessage('Necesito hablar con un especialista')" class="quick-btn">
+          👨‍💼 Especialista
+        </button>
+      </div>
+    </div>
+    
+    <div class="chat-input-container">
+      <input 
+        type="text" 
+        id="chatInput" 
+        placeholder="Escribe tu mensaje..." 
+        onkeypress="handleChatKeyPress(event)"
+      >
+      <button onclick="sendMessage()" class="send-btn">📤</button>
+    </div>
+    
+    <div class="chat-footer">
+      <div style="font-size:0.8rem;color:var(--accent);text-align:center;">
+        🔒 Conversación encriptada • ⚡ Respuesta en 2-5 min
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botón de Chat cuando está minimizado -->
+<div id="chatButton" class="chat-button" onclick="openChat()" style="display:none;">
+  <div class="chat-button-icon">💬</div>
+  <div class="chat-notification" id="chatNotification">1</div>
+</div>
+
+<style>
+.chat-widget {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-height: 500px;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(19, 19, 19, 0.95) 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 2px solid var(--border);
+  z-index: 9998;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: var(--background);
+  padding: 15px 20px;
+  border-radius: 18px 18px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chat-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+}
+
+.chat-title {
+  flex: 1;
+}
+
+.chat-title > div:first-child {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.chat-status {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.chat-toggle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.chat-toggle:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.message-content {
+  background: var(--card);
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  max-width: 80%;
+  position: relative;
+}
+
+.bot-message .message-content {
+  background: linear-gradient(135deg, rgba(110, 122, 138, 0.1) 0%, rgba(178, 187, 200, 0.05) 100%);
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.user-message .message-avatar {
+  background: var(--accent-light);
+}
+
+.user-message .message-content {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: var(--background);
+}
+
+.message-content p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.user-message .message-content p {
+  color: var(--background);
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-top: 5px;
+  opacity: 0.8;
+}
+
+.user-message .message-time {
+  color: rgba(255,255,255,0.8);
+}
+
+.quick-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.quick-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.quick-btn:hover {
+  background: var(--accent);
+  color: var(--background);
+  transform: translateY(-2px);
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 15px 20px;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.chat-input-container input {
+  flex: 1;
+  background: var(--card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.chat-input-container input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(110, 122, 138, 0.2);
+}
+
+.send-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  border: none;
+  color: var(--background);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.chat-footer {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.chat-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  z-index: 9997;
+  position: relative;
+}
+
+.chat-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.chat-button-icon {
+  font-size: 1.8rem;
+  color: var(--background);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+}
+
+.chat-notification {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .chat-widget {
+    width: 300px;
+    right: 20px;
+    bottom: 80px;
+  }
+  
+  .chat-button {
+    width: 55px;
+    height: 55px;
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  .chat-button-icon {
+    font-size: 1.6rem;
+  }
+  
+  .quick-options {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+let chatOpen = true;
+let messageCount = 0;
+
+function toggleChat() {
+  const chatBody = document.getElementById('chatBody');
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWidget = document.getElementById('chatWidget');
+  const chatButton = document.getElementById('chatButton');
+  
+  if (chatOpen) {
+    chatBody.style.display = 'none';
+    chatToggle.textContent = '+';
+    chatWidget.style.display = 'none';
+    chatButton.style.display = 'flex';
+    chatOpen = false;
+  } else {
+    chatBody.style.display = 'flex';
+    chatToggle.textContent = '−';
+    chatOpen = true;
+  }
+}
+
+function openChat() {
+  const chatWidget = document.getElementById('chatWidget');
+  const chatButton = document.getElementById('chatButton');
+  const chatBody = document.getElementById('chatBody');
+  const chatToggle = document.getElementById('chatToggle');
+  const notification = document.getElementById('chatNotification');
+  
+  chatWidget.style.display = 'block';
+  chatButton.style.display = 'none';
+  chatBody.style.display = 'flex';
+  chatToggle.textContent = '−';
+  notification.style.display = 'none';
+  chatOpen = true;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  
+  if (!message) return;
+  
+  addMessage(message, 'user');
+  input.value = '';
+  
+  // Simulate bot response
+  setTimeout(() => {
+    const responses = [
+      "Gracias por tu mensaje. Un especialista te contactará en los próximos 5 minutos.",
+      "He registrado tu consulta. ¿Podrías proporcionar más detalles sobre tu caso?",
+      "Perfecto. Te conectaré con nuestro equipo de investigación especializada.",
+      "Entiendo tu situación. Para brindarte la mejor asistencia, ¿es un caso urgente?",
+      "Excelente. Nuestro equipo está preparado para ayudarte. ¿Prefieres una llamada o WhatsApp?"
+    ];
+    
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    addMessage(randomResponse, 'bot');
+  }, 1500);
+}
+
+function sendQuickMessage(message) {
+  addMessage(message, 'user');
+  
+  // Remove quick options after first use
+  const quickOptions = document.querySelector('.quick-options');
+  if (quickOptions) {
+    quickOptions.style.display = 'none';
+  }
+  
+  // Simulate bot response based on quick message
+  setTimeout(() => {
+    let response = "";
+    
+    if (message.includes('urgente')) {
+      response = "Entiendo que es urgente. Te conectaré inmediatamente con nuestro equipo de respuesta rápida. ¿Puedes describir brevemente la situación?";
+    } else if (message.includes('precios')) {
+      response = "Nuestros precios varían según la complejidad del caso. Para darte una cotización exacta, necesito conocer más detalles. ¿Qué tipo de investigación necesitas?";
+    } else if (message.includes('servicios')) {
+      response = "Ofrecemos: 🔍 Verificación de antecedentes, 📍 Localización de personas, 👁️ Vigilancia, ⚖️ Anti-fraude, 💼 Protección corporativa, 🏠 Casos familiares, y 💻 Ciberinteligencia. ¿Cuál te interesa?";
+    } else if (message.includes('especialista')) {
+      response = "Te conectaré con un especialista ahora mismo. Mientras tanto, ¿podrías contarme brevemente sobre tu caso para asignar al experto más adecuado?";
+    }
+    
+    addMessage(response, 'bot');
+  }, 1000);
+}
+
+function addMessage(text, sender) {
+  const messagesContainer = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}-message`;
+  
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('es-ES', { 
+    hour: '2-digit', 
+    minute: '2-digit' 
+  });
+  
+  const avatar = sender === 'user' ? '👤' : '🤖';
+  
+  messageDiv.innerHTML = `
+    <div class="message-avatar">${avatar}</div>
+    <div class="message-content">
+      <p>${text}</p>
+      <div class="message-time">${timeString}</div>
+    </div>
+  `;
+  
+  messagesContainer.appendChild(messageDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  
+  // Show notification if chat is closed
+  if (!chatOpen && sender === 'bot') {
+    const notification = document.getElementById('chatNotification');
+    messageCount++;
+    notification.textContent = messageCount;
+    notification.style.display = 'flex';
+  }
+}
+
+function handleChatKeyPress(event) {
+  if (event.key === 'Enter') {
+    sendMessage();
+  }
+}
+
+// Initialize chat
+document.addEventListener('DOMContentLoaded', function() {
+  // Auto-minimize chat after 10 seconds if no interaction
+  setTimeout(() => {
+    if (chatOpen) {
+      toggleChat();
+    }
+  }, 10000);
+});
+</script>
