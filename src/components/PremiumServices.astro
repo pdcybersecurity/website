@@ -40,7 +40,7 @@
           <li>📊 Análisis de impacto en tiempo real</li>
           <li>🛠️ Herramientas de recuperación</li>
         </ul>
-        <div class="premium-price">Desde $5,000</div>
+        <div class="premium-price">Consultar</div>
       </div>
       
       <!-- Inteligencia Competitiva -->
@@ -55,69 +55,13 @@
           <li>💡 Identificación de oportunidades</li>
           <li>📋 Reportes ejecutivos detallados</li>
         </ul>
-        <div class="premium-price">Desde $3,000</div>
+        <div class="premium-price">Consultar</div>
       </div>
     </div>
     
-    <!-- Calculadora de Presupuestos -->
-    <div class="budget-calculator">
-      <h3 style="text-align:center;color:var(--accent-light);margin-bottom:30px;font-size:1.8rem;">
-        💰 <span style="color:#fff;">Calculadora de Presupuestos</span>
-      </h3>
-      <div class="calculator-form">
-        <div class="form-group">
-          <label>Tipo de Servicio:</label>
-          <select id="serviceType" onchange="calculateBudget()">
-            <option value="">Seleccionar servicio...</option>
-            <option value="antecedentes">Verificación de Antecedentes</option>
-            <option value="localizacion">Localización de Personas</option>
-            <option value="vigilancia">Vigilancia Especializada</option>
-            <option value="fraudes">Investigación Anti-Fraude</option>
-            <option value="corporativo">Protección Corporativa</option>
-            <option value="domestico">Casos Familiares</option>
-            <option value="ciberinteligencia">Ciberinteligencia & OSINT</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label>Urgencia del Caso:</label>
-          <select id="urgency" onchange="calculateBudget()">
-            <option value="">Seleccionar urgencia...</option>
-            <option value="standard">Estándar (5-7 días)</option>
-            <option value="priority">Prioritario (2-3 días)</option>
-            <option value="urgent">Urgente (24-48 horas)</option>
-            <option value="emergency">Emergencia (inmediato)</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label>Complejidad:</label>
-          <select id="complexity" onchange="calculateBudget()">
-            <option value="">Seleccionar complejidad...</option>
-            <option value="basic">Básica</option>
-            <option value="intermediate">Intermedia</option>
-            <option value="advanced">Avanzada</option>
-            <option value="expert">Experta</option>
-          </select>
-        </div>
-        
-        <div class="budget-result" id="budgetResult">
-          <div class="result-icon">💰</div>
-          <div class="result-text">
-            <h4>Presupuesto Estimado</h4>
-            <p>Selecciona las opciones para ver el presupuesto estimado</p>
-          </div>
-        </div>
-        
-        <div style="text-align:center;margin-top:30px;">
-          <a href="https://wa.me/529844183372" class="budget-cta">
-            📞 SOLICITAR COTIZACIÓN EXACTA
-          </a>
-          <p style="font-size:0.9rem;color:var(--accent);margin-top:10px;font-style:italic;">
-            *Presupuesto final sujeto a evaluación detallada del caso
-          </p>
-        </div>
-      </div>
+    <!-- Generador de Mensajes -->
+    <div id="messageGeneratorContainer">
+      <!-- El componente MessageGenerator se insertará aquí -->
     </div>
   </div>
 </section>
@@ -213,177 +157,9 @@
   margin-top: 20px;
 }
 
-.budget-calculator {
-  background: linear-gradient(135deg, var(--surface-alt) 0%, rgba(24, 24, 24, 0.9) 100%);
-  padding: 40px;
-  border-radius: 25px;
-  border: 2px solid var(--border);
-  margin-top: 40px;
-}
-
-.calculator-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-bottom: 30px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  color: var(--accent-light);
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.form-group select {
-  background: var(--card);
-  border: 2px solid var(--border);
-  color: var(--text);
-  padding: 12px 15px;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.form-group select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(110, 122, 138, 0.2);
-}
-
-.budget-result {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(110, 122, 138, 0.1) 0%, rgba(178, 187, 200, 0.05) 100%);
-  padding: 30px;
-  border-radius: 20px;
-  border: 2px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  text-align: left;
-}
-
-.result-icon {
-  font-size: 3rem;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-}
-
-.result-text h4 {
-  color: var(--text);
-  margin-bottom: 8px;
-  font-size: 1.3rem;
-}
-
-.result-text p {
-  color: var(--subtext);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.budget-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #28ca42 0%, #20a034 100%);
-  color: white;
-  padding: 15px 30px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.budget-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, #20a034 0%, #28ca42 100%);
-}
-
 @media (max-width: 768px) {
   .premium-card {
     padding: 30px 20px;
   }
-  
-  .budget-calculator {
-    padding: 25px 20px;
-  }
-  
-  .calculator-form {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .budget-result {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
 }
 </style>
-
-<script>
-function calculateBudget() {
-  const serviceType = document.getElementById('serviceType').value;
-  const urgency = document.getElementById('urgency').value;
-  const complexity = document.getElementById('complexity').value;
-  const resultDiv = document.getElementById('budgetResult');
-  
-  if (!serviceType || !urgency || !complexity) {
-    return;
-  }
-  
-  // Base prices for each service
-  const basePrices = {
-    antecedentes: 800,
-    localizacion: 1200,
-    vigilancia: 2000,
-    fraudes: 1500,
-    corporativo: 2500,
-    domestico: 1000,
-    ciberinteligencia: 3000
-  };
-  
-  // Multipliers
-  const urgencyMultipliers = {
-    standard: 1,
-    priority: 1.3,
-    urgent: 1.8,
-    emergency: 2.5
-  };
-  
-  const complexityMultipliers = {
-    basic: 1,
-    intermediate: 1.4,
-    advanced: 1.8,
-    expert: 2.2
-  };
-  
-  const basePrice = basePrices[serviceType];
-  const urgencyMultiplier = urgencyMultipliers[urgency];
-  const complexityMultiplier = complexityMultipliers[complexity];
-  
-  const finalPrice = Math.round(basePrice * urgencyMultiplier * complexityMultiplier);
-  const minPrice = Math.round(finalPrice * 0.8);
-  const maxPrice = Math.round(finalPrice * 1.2);
-  
-  resultDiv.innerHTML = `
-    <div class="result-icon">💰</div>
-    <div class="result-text">
-      <h4>Presupuesto Estimado</h4>
-      <p style="font-size:1.2rem;color:var(--accent-light);font-weight:600;">
-        $${minPrice.toLocaleString()} - $${maxPrice.toLocaleString()} USD
-      </p>
-      <p style="margin-top:8px;">
-        Incluye: Investigación completa, evidencia digital, reporte ejecutivo y seguimiento post-entrega
-      </p>
-    </div>
-  `;
-}
-</script>

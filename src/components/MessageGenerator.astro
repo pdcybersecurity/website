@@ -1,0 +1,375 @@
+---
+---
+
+<section class="message-generator-section" style="background:linear-gradient(135deg, var(--surface) 0%, var(--surface-alt) 100%);padding:60px 0;border-top:1px solid var(--border);">
+  <div style="max-width:800px;margin:0 auto;padding:0 4vw;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <h3 style="color:var(--accent-light);font-size:2rem;margin-bottom:15px;font-weight:600;">
+        📝 <span style="color:#fff;">Generador de Consulta Personalizada</span>
+      </h3>
+      <p style="color:var(--subtext);font-size:1.1rem;line-height:1.6;">
+        Crea un mensaje personalizado con los detalles de tu caso para obtener una respuesta más precisa
+      </p>
+    </div>
+    
+    <div class="generator-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>🎯 Tipo de Servicio:</label>
+          <select id="serviceType" onchange="generateMessage()">
+            <option value="">Seleccionar servicio...</option>
+            <option value="antecedentes">🔍 Verificación de Antecedentes</option>
+            <option value="localizacion">📍 Localización de Personas</option>
+            <option value="vigilancia">👁️ Vigilancia Especializada</option>
+            <option value="fraudes">⚖️ Investigación Anti-Fraude</option>
+            <option value="corporativo">💼 Protección Corporativa</option>
+            <option value="domestico">🏠 Casos Familiares</option>
+            <option value="ciberinteligencia">💻 Ciberinteligencia & OSINT</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>⚡ Urgencia del Caso:</label>
+          <select id="urgency" onchange="generateMessage()">
+            <option value="">Seleccionar urgencia...</option>
+            <option value="standard">📅 Estándar (5-7 días)</option>
+            <option value="priority">🚀 Prioritario (2-3 días)</option>
+            <option value="urgent">🔥 Urgente (24-48 horas)</option>
+            <option value="emergency">🚨 Emergencia (inmediato)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>🔧 Complejidad del Caso:</label>
+          <select id="complexity" onchange="generateMessage()">
+            <option value="">Seleccionar complejidad...</option>
+            <option value="basic">🟢 Básica - Información estándar</option>
+            <option value="intermediate">🟡 Intermedia - Requiere análisis</option>
+            <option value="advanced">🟠 Avanzada - Técnicas especializadas</option>
+            <option value="expert">🔴 Experta - Máximo nivel técnico</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>🌍 Ubicación Geográfica:</label>
+          <select id="location" onchange="generateMessage()">
+            <option value="">Seleccionar ubicación...</option>
+            <option value="local">🏠 Local/Nacional</option>
+            <option value="international">🌎 Internacional</option>
+            <option value="multiple">🗺️ Múltiples países</option>
+            <option value="unknown">❓ Ubicación desconocida</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group full-width">
+        <label>📋 Detalles Adicionales (Opcional):</label>
+        <textarea 
+          id="additionalDetails" 
+          placeholder="Describe brevemente tu caso, personas involucradas, fechas importantes, o cualquier información relevante..."
+          onchange="generateMessage()"
+          rows="4"
+        ></textarea>
+      </div>
+      
+      <div class="generated-message" id="generatedMessage">
+        <div class="message-icon">📝</div>
+        <div class="message-content">
+          <h4>Tu Mensaje Personalizado</h4>
+          <p>Completa los campos para generar un mensaje personalizado que incluya todos los detalles de tu caso</p>
+        </div>
+      </div>
+      
+      <div style="text-align:center;margin-top:30px;">
+        <a href="#" id="whatsappLink" class="message-cta" onclick="sendToWhatsApp()">
+          📱 ENVIAR VÍA WHATSAPP
+        </a>
+        <button onclick="copyMessage()" class="copy-btn" style="margin-left:15px;">
+          📋 COPIAR MENSAJE
+        </button>
+        <p style="font-size:0.9rem;color:var(--accent);margin-top:15px;font-style:italic;">
+          ⚡ <strong>Respuesta garantizada en menos de 5 minutos</strong> • 🔒 <strong>Consulta 100% confidencial</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.generator-form {
+  background: linear-gradient(135deg, var(--card) 0%, rgba(20, 20, 23, 0.9) 100%);
+  padding: 40px;
+  border-radius: 25px;
+  border: 2px solid var(--border);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form-group select,
+.form-group textarea {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(110, 122, 138, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.generated-message {
+  background: linear-gradient(135deg, rgba(110, 122, 138, 0.1) 0%, rgba(178, 187, 200, 0.05) 100%);
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 30px;
+  min-height: 120px;
+}
+
+.message-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+  flex-shrink: 0;
+}
+
+.message-content h4 {
+  color: var(--text);
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.message-content p {
+  color: var(--subtext);
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.message-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.message-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+}
+
+.copy-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: var(--background);
+  border: none;
+  padding: 15px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.copy-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+}
+
+@media (max-width: 768px) {
+  .generator-form {
+    padding: 25px 20px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .generated-message {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .message-cta,
+  .copy-btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+</style>
+
+<script>
+let generatedMessageText = '';
+
+function generateMessage() {
+  const serviceType = document.getElementById('serviceType').value;
+  const urgency = document.getElementById('urgency').value;
+  const complexity = document.getElementById('complexity').value;
+  const location = document.getElementById('location').value;
+  const additionalDetails = document.getElementById('additionalDetails').value;
+  const resultDiv = document.getElementById('generatedMessage');
+  
+  if (!serviceType || !urgency || !complexity || !location) {
+    return;
+  }
+  
+  // Service descriptions
+  const services = {
+    antecedentes: 'Verificación de Antecedentes',
+    localizacion: 'Localización de Personas',
+    vigilancia: 'Vigilancia Especializada',
+    fraudes: 'Investigación Anti-Fraude',
+    corporativo: 'Protección Corporativa',
+    domestico: 'Casos Familiares',
+    ciberinteligencia: 'Ciberinteligencia & OSINT'
+  };
+  
+  const urgencyTexts = {
+    standard: 'tiempo estándar (5-7 días)',
+    priority: 'carácter prioritario (2-3 días)',
+    urgent: 'máxima urgencia (24-48 horas)',
+    emergency: 'emergencia inmediata'
+  };
+  
+  const complexityTexts = {
+    basic: 'complejidad básica',
+    intermediate: 'complejidad intermedia con análisis especializado',
+    advanced: 'alta complejidad con técnicas avanzadas',
+    expert: 'máxima complejidad con metodología experta'
+  };
+  
+  const locationTexts = {
+    local: 'ámbito local/nacional',
+    international: 'ámbito internacional',
+    multiple: 'múltiples países',
+    unknown: 'ubicación por determinar'
+  };
+  
+  // Generate personalized message
+  let message = `🔒 CONSULTA CONFIDENCIAL - PDC\n\n`;
+  message += `Hola, necesito contratar sus servicios de ${services[serviceType]}.\n\n`;
+  message += `📋 DETALLES DEL CASO:\n`;
+  message += `• Servicio: ${services[serviceType]}\n`;
+  message += `• Urgencia: ${urgencyTexts[urgency]}\n`;
+  message += `• Complejidad: ${complexityTexts[complexity]}\n`;
+  message += `• Ubicación: ${locationTexts[location]}\n\n`;
+  
+  if (additionalDetails.trim()) {
+    message += `📝 INFORMACIÓN ADICIONAL:\n${additionalDetails.trim()}\n\n`;
+  }
+  
+  message += `🎯 SOLICITO:\n`;
+  message += `• Cotización detallada del servicio\n`;
+  message += `• Tiempo estimado de resolución\n`;
+  message += `• Metodología a utilizar\n`;
+  message += `• Siguiente paso para iniciar\n\n`;
+  message += `⚡ Disponible para llamada inmediata si es necesario.\n\n`;
+  message += `Gracias por su profesionalismo y discreción.`;
+  
+  generatedMessageText = message;
+  
+  resultDiv.innerHTML = `
+    <div class="message-icon">✅</div>
+    <div class="message-content">
+      <h4>Mensaje Personalizado Generado</h4>
+      <p>${message}</p>
+    </div>
+  `;
+  
+  // Update WhatsApp link
+  const whatsappLink = document.getElementById('whatsappLink');
+  const encodedMessage = encodeURIComponent(message);
+  whatsappLink.href = `https://wa.me/529844183372?text=${encodedMessage}`;
+}
+
+function sendToWhatsApp() {
+  if (!generatedMessageText) {
+    alert('Por favor completa todos los campos para generar el mensaje');
+    return false;
+  }
+  
+  const encodedMessage = encodeURIComponent(generatedMessageText);
+  window.open(`https://wa.me/529844183372?text=${encodedMessage}`, '_blank');
+  return false;
+}
+
+function copyMessage() {
+  if (!generatedMessageText) {
+    alert('Por favor completa todos los campos para generar el mensaje');
+    return;
+  }
+  
+  navigator.clipboard.writeText(generatedMessageText).then(() => {
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = '✅ COPIADO';
+    btn.style.background = 'linear-gradient(135deg, #28ca42 0%, #20a034 100%)';
+    
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = 'linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%)';
+    }, 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = generatedMessageText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    alert('Mensaje copiado al portapapeles');
+  });
+}
+</script>

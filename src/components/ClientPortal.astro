@@ -28,8 +28,8 @@
             <div class="portal-nav">
               <div class="nav-item active">📊 Dashboard</div>
               <div class="nav-item">📋 Mi Caso</div>
-              <div class="nav-item">💬 Mensajes</div>
-              <div class="nav-item">📁 Evidencia</div>
+              <div class="nav-item">📁 Reportes</div>
+              <div class="nav-item">📅 Timeline</div>
             </div>
             <div class="portal-main">
               <div class="case-status">
@@ -39,11 +39,25 @@
                 </div>
                 <p style="font-size:0.9rem;color:var(--subtext);">65% Completado - Estimado: 2 días</p>
               </div>
+              <div class="case-details">
+                <div class="detail-item">
+                  <span class="detail-label">📅 Fecha Inicio:</span>
+                  <span class="detail-value">15 Enero 2025</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">⏰ Finalización Est.:</span>
+                  <span class="detail-value">22 Enero 2025</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">👨‍💼 Investigador:</span>
+                  <span class="detail-value">Agente Especializado</span>
+                </div>
+              </div>
               <div class="recent-updates">
-                <h5>📢 Actualizaciones Recientes</h5>
+                <h5>📢 Últimos Reportes</h5>
                 <div class="update-item">
                   <span class="update-time">Hace 2h</span>
-                  <span class="update-text">Nueva evidencia recolectada</span>
+                  <span class="update-text">Reporte parcial disponible</span>
                 </div>
                 <div class="update-item">
                   <span class="update-time">Hace 5h</span>
@@ -66,18 +80,18 @@
         </div>
         
         <div class="feature-item">
-          <div class="feature-icon">🔐</div>
+          <div class="feature-icon">📁</div>
           <div>
-            <h4>Comunicación Encriptada</h4>
-            <p>Chat seguro con tu investigador asignado. Todas las conversaciones protegidas end-to-end.</p>
+            <h4>Reportes Seguros</h4>
+            <p>Acceso inmediato a todos los reportes y evidencia recolectada con timestamps y validación.</p>
           </div>
         </div>
         
         <div class="feature-item">
-          <div class="feature-icon">📁</div>
+          <div class="feature-icon">📅</div>
           <div>
-            <h4>Evidencia Digital Segura</h4>
-            <p>Acceso inmediato a toda la evidencia recolectada con timestamps y validación legal.</p>
+            <h4>Timeline Detallado</h4>
+            <p>Cronología completa del caso desde inicio hasta finalización con fechas exactas.</p>
           </div>
         </div>
         
@@ -89,12 +103,18 @@
           </div>
         </div>
         
-        <div style="text-align:center;margin-top:40px;">
-          <a href="#" class="portal-cta" onclick="alert('Portal disponible una vez iniciado el caso')">
-            🚀 ACCEDER AL PORTAL
-          </a>
+        <!-- Login Form -->
+        <div class="portal-login">
+          <h4>🔐 Acceso al Portal</h4>
+          <div class="login-form">
+            <input type="text" id="caseId" placeholder="ID del Caso" />
+            <input type="password" id="casePassword" placeholder="Contraseña del Caso" />
+            <button onclick="loginToPortal()" class="login-btn">
+              🚀 ACCEDER
+            </button>
+          </div>
           <p style="font-size:0.9rem;color:var(--accent);margin-top:10px;font-style:italic;">
-            *Disponible automáticamente al contratar cualquier servicio
+            *Credenciales proporcionadas al iniciar el caso
           </p>
         </div>
       </div>
@@ -138,7 +158,7 @@
 
 .portal-content {
   display: flex;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 .portal-nav {
@@ -191,6 +211,31 @@
   height: 100%;
   border-radius: 4px;
   transition: width 0.3s ease;
+}
+
+.case-details {
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 0.9rem;
+}
+
+.detail-label {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.detail-value {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .recent-updates {
@@ -251,25 +296,58 @@
   margin: 0;
 }
 
-.portal-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  color: var(--background);
-  padding: 15px 30px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.portal-login {
+  background: linear-gradient(135deg, var(--card) 0%, rgba(20, 20, 23, 0.9) 100%);
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  margin-top: 20px;
 }
 
-.portal-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+.portal-login h4 {
+  color: var(--accent-light);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(110, 122, 138, 0.2);
+}
+
+.login-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: var(--background);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 768px) {
@@ -303,3 +381,28 @@
   }
 }
 </style>
+
+<script>
+function loginToPortal() {
+  const caseId = document.getElementById('caseId').value;
+  const password = document.getElementById('casePassword').value;
+  
+  if (!caseId || !password) {
+    alert('Por favor ingresa el ID del caso y la contraseña');
+    return;
+  }
+  
+  // Simulate login validation
+  if (caseId.length < 3 || password.length < 4) {
+    alert('Credenciales inválidas. Verifica el ID del caso y la contraseña proporcionados por PDC.');
+    return;
+  }
+  
+  // Simulate successful login
+  alert('🔐 Acceso autorizado. Redirigiendo al portal seguro...\n\n⚠️ Nota: Esta es una demostración. En el sistema real, serías redirigido al portal personalizado de tu caso.');
+  
+  // Clear form
+  document.getElementById('caseId').value = '';
+  document.getElementById('casePassword').value = '';
+}
+</script>
