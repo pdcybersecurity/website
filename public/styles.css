@@ -144,6 +144,49 @@ a:hover, .btn:hover {
   padding-right: 0;
 }
 
+/* Fondos específicos para cada servicio */
+.hero.antecedentes {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.localizacion {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.vigilancia {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.fraudes {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.corporativo {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.domestico {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
+.hero.ciberinteligencia {
+  background: 
+    var(--hero-gradient),
+    url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+}
+
 .hero::before {
   content: '';
   position: absolute;
