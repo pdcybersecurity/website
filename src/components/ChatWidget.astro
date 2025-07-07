@@ -6,7 +6,7 @@
   <div class="chat-header" onclick="toggleChat()">
     <div class="chat-icon"><i class="fab fa-whatsapp"></i></div>
     <div class="chat-title">
-      <div>Chat Seguro PDC</div>
+      <div>Asistente PDC</div>
       <div class="chat-status"><i class="fas fa-circle" style="color:#28ca42;"></i> En línea</div>
     </div>
     <div class="chat-toggle" id="chatToggle">−</div>
@@ -17,23 +17,23 @@
       <div class="message bot-message">
         <div class="message-avatar"><i class="fas fa-robot"></i></div>
         <div class="message-content">
-          <p>¡Hola! Soy el asistente virtual de PDC. ¿En qué puedo ayudarte hoy?</p>
+          <p>¡Hola! Soy el asistente de PDC. Te ayudo a conectar con nuestros especialistas.</p>
           <div class="message-time">Ahora</div>
         </div>
       </div>
       
-      <div class="quick-options">
-        <button onclick="sendQuickMessage('Necesito una consulta urgente')" class="quick-btn">
+      <div class="quick-options" id="quickOptions">
+        <button onclick="startDataCollection('urgent')" class="quick-btn">
           <i class="fas fa-exclamation-triangle"></i> Consulta Urgente
         </button>
-        <button onclick="sendQuickMessage('Quiero información sobre precios')" class="quick-btn">
-          <i class="fas fa-dollar-sign"></i> Precios
+        <button onclick="startDataCollection('services')" class="quick-btn">
+          <i class="fas fa-search"></i> Conocer Servicios
         </button>
-        <button onclick="sendQuickMessage('¿Qué servicios ofrecen?')" class="quick-btn">
-          <i class="fas fa-search"></i> Servicios
+        <button onclick="startDataCollection('pricing')" class="quick-btn">
+          <i class="fas fa-dollar-sign"></i> Información de Precios
         </button>
-        <button onclick="sendQuickMessage('Necesito hablar con un especialista')" class="quick-btn">
-          <i class="fas fa-user-tie"></i> Especialista
+        <button onclick="startDataCollection('specialist')" class="quick-btn">
+          <i class="fas fa-user-tie"></i> Hablar con Especialista
         </button>
       </div>
     </div>
@@ -50,7 +50,7 @@
     
     <div class="chat-footer">
       <div style="font-size:0.8rem;color:var(--accent);text-align:center;">
-        <i class="fas fa-lock"></i> Conversación encriptada • <i class="fas fa-bolt"></i> Respuesta en 2-5 min
+        <i class="fas fa-lock"></i> Conversación segura • <i class="fas fa-bolt"></i> Respuesta inmediata
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
 <!-- Botón de Chat cuando está minimizado -->
 <div id="chatButton" class="chat-button" onclick="openChat()">
   <div class="chat-button-icon"><i class="fab fa-whatsapp"></i></div>
-  <div class="chat-notification" id="chatNotification">1</div>
+  <div class="chat-notification" id="chatNotification" style="display:none;">1</div>
 </div>
 
 <style>
@@ -80,8 +80,8 @@
 }
 
 .chat-header {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  color: var(--background);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
   padding: 15px 20px;
   border-radius: 18px 18px 0 0;
   display: flex;
@@ -258,9 +258,9 @@
 }
 
 .send-btn {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   border: none;
-  color: var(--background);
+  color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -286,7 +286,7 @@
 .chat-button {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 100px;
   width: 60px;
   height: 60px;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
@@ -362,7 +362,7 @@
   .chat-button {
     width: 55px;
     height: 55px;
-    right: 20px;
+    right: 90px;
     bottom: 20px;
   }
   
@@ -379,6 +379,47 @@
 <script is:inline>
 let chatOpen = false;
 let messageCount = 0;
+let currentStep = 'initial';
+let userData = {};
+
+// Servicios disponibles
+const services = {
+  antecedentes: {
+    name: 'Verificación de Antecedentes',
+    description: 'OSINT profundo, análisis de datos y reconstrucción de historial completo.',
+    features: ['Análisis OSINT profundo', 'Mapeo de relaciones', 'Verificación legal', 'Análisis digital']
+  },
+  localizacion: {
+    name: 'Localización de Personas',
+    description: 'Rastreo digital avanzado y técnicas de campo especializadas.',
+    features: ['Geolocalización avanzada', 'OSINT de redes sociales', 'Análisis predictivo', 'Red global de contactos']
+  },
+  vigilancia: {
+    name: 'Vigilancia Especializada',
+    description: 'Monitoreo discreto 24/7 físico y digital con evidencia legal.',
+    features: ['Vigilancia física discreta', 'Monitoreo digital 24/7', 'Tecnología de observación', 'Reportes en tiempo real']
+  },
+  fraudes: {
+    name: 'Investigación Anti-Fraude',
+    description: 'Análisis especializado de siniestros y recolección de evidencia legal.',
+    features: ['Investigación de siniestros', 'Evidencia digital', 'Análisis documental', 'Informes periciales']
+  },
+  corporativo: {
+    name: 'Protección Corporativa',
+    description: 'Due diligence, amenazas internas y protección de activos empresariales.',
+    features: ['Análisis de amenazas', 'Protección corporativa', 'Due diligence avanzado', 'Compliance y auditoría']
+  },
+  domestico: {
+    name: 'Casos Familiares',
+    description: 'Infidelidad, custodia, cuidado de hijos y seguridad familiar.',
+    features: ['Investigación de custodia', 'Casos de infidelidad', 'Localización de familiares', 'Protección de hijos']
+  },
+  ciberinteligencia: {
+    name: 'Ciberinteligencia & OSINT',
+    description: 'Herramientas ofensivas y defensivas de alta tecnología.',
+    features: ['OSINT avanzado', 'Detección de amenazas', 'Herramientas ofensivas/defensivas', 'Análisis de amenazas']
+  }
+};
 
 function toggleChat() {
   const chatBody = document.getElementById('chatBody');
@@ -414,6 +455,37 @@ function openChat() {
   chatOpen = true;
 }
 
+function startDataCollection(type) {
+  // Ocultar opciones rápidas
+  document.getElementById('quickOptions').style.display = 'none';
+  
+  currentStep = type;
+  userData = { type: type };
+  
+  let response = '';
+  
+  switch(type) {
+    case 'urgent':
+      response = "Entiendo que es urgente. Para conectarte con nuestro equipo de respuesta inmediata, necesito algunos datos:\n\n¿Podrías contarme brevemente sobre tu situación?";
+      break;
+    case 'services':
+      response = "Te explico nuestros servicios principales:\n\n" + 
+                Object.keys(services).map(key => 
+                  `• ${services[key].name}: ${services[key].description}`
+                ).join('\n\n') + 
+                "\n\n¿Cuál de estos servicios te interesa más?";
+      break;
+    case 'pricing':
+      response = "Nuestros precios varían según la complejidad del caso. Para darte una cotización exacta, necesito conocer:\n\n1. ¿Qué tipo de investigación necesitas?\n2. ¿Cuál es la urgencia del caso?\n3. ¿Tienes algún detalle específico?";
+      break;
+    case 'specialist':
+      response = "Te conectaré con un especialista. Para asignar al experto más adecuado, cuéntame:\n\n¿Qué tipo de caso necesitas resolver?";
+      break;
+  }
+  
+  addMessage(response, 'bot');
+}
+
 function sendMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim();
@@ -423,46 +495,72 @@ function sendMessage() {
   addMessage(message, 'user');
   input.value = '';
   
-  // Simulate bot response
-  setTimeout(() => {
-    const responses = [
-      "Gracias por tu mensaje. Un especialista te contactará en los próximos 5 minutos.",
-      "He registrado tu consulta. ¿Podrías proporcionar más detalles sobre tu caso?",
-      "Perfecto. Te conectaré con nuestro equipo de investigación especializada.",
-      "Entiendo tu situación. Para brindarte la mejor asistencia, ¿es un caso urgente?",
-      "Excelente. Nuestro equipo está preparado para ayudarte. ¿Prefieres una llamada o WhatsApp?"
-    ];
-    
-    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-    addMessage(randomResponse, 'bot');
-  }, 1500);
+  // Procesar respuesta según el paso actual
+  processUserResponse(message);
 }
 
-function sendQuickMessage(message) {
-  addMessage(message, 'user');
+function processUserResponse(message) {
+  userData.lastMessage = message;
   
-  // Remove quick options after first use
-  const quickOptions = document.querySelector('.quick-options');
-  if (quickOptions) {
-    quickOptions.style.display = 'none';
-  }
-  
-  // Simulate bot response based on quick message
   setTimeout(() => {
-    let response = "";
+    let response = '';
     
-    if (message.includes('urgente')) {
-      response = "Entiendo que es urgente. Te conectaré inmediatamente con nuestro equipo de respuesta rápida. ¿Puedes describir brevemente la situación?";
-    } else if (message.includes('precios')) {
-      response = "Nuestros servicios se cotizan según la complejidad del caso. Para darte una cotización exacta, necesito conocer más detalles. ¿Qué tipo de investigación necesitas?";
-    } else if (message.includes('servicios')) {
-      response = "Ofrecemos: 🔍 Verificación de antecedentes, 📍 Localización de personas, 👁️ Vigilancia, ⚖️ Anti-fraude, 💼 Protección corporativa, 🏠 Casos familiares, y 💻 Ciberinteligencia. ¿Cuál te interesa?";
-    } else if (message.includes('especialista')) {
-      response = "Te conectaré con un especialista ahora mismo. Mientras tanto, ¿podrías contarme brevemente sobre tu caso para asignar al experto más adecuado?";
+    switch(currentStep) {
+      case 'urgent':
+        userData.situation = message;
+        response = "Gracias por la información. He registrado tu caso como urgente.\n\n¿Cuál es tu nombre y número de contacto para que nuestro equipo te llame inmediatamente?";
+        currentStep = 'contact_urgent';
+        break;
+        
+      case 'services':
+        userData.serviceInterest = message;
+        response = "Perfecto. Para ese servicio, ¿podrías contarme más detalles sobre tu caso específico?";
+        currentStep = 'service_details';
+        break;
+        
+      case 'pricing':
+        userData.pricingInfo = message;
+        response = "Entendido. Con esa información puedo preparar una cotización. ¿Cuál es tu email para enviarte la propuesta detallada?";
+        currentStep = 'contact_pricing';
+        break;
+        
+      case 'specialist':
+        userData.caseType = message;
+        response = "Perfecto. ¿Cuál es tu nombre y email para que nuestro especialista te contacte en las próximas 2 horas?";
+        currentStep = 'contact_specialist';
+        break;
+        
+      case 'contact_urgent':
+      case 'contact_pricing':
+      case 'contact_specialist':
+      case 'service_details':
+        userData.contactInfo = message;
+        sendToTelegram();
+        response = "¡Excelente! He enviado toda tu información a nuestro equipo.\n\n✅ Recibirás respuesta en menos de 5 minutos\n🔒 Toda la información es confidencial\n📱 También puedes contactarnos directamente:\n\n• WhatsApp: +52 984 418 3372\n• Telegram: @pdc_agency";
+        currentStep = 'completed';
+        break;
+        
+      default:
+        response = "Gracias por tu mensaje. ¿En qué más puedo ayudarte?";
     }
     
     addMessage(response, 'bot');
   }, 1000);
+}
+
+function sendToTelegram() {
+  // Preparar mensaje para Telegram
+  let telegramMessage = `🔒 NUEVA CONSULTA - PDC\n\n`;
+  telegramMessage += `📋 Tipo: ${userData.type}\n`;
+  telegramMessage += `📝 Información:\n${JSON.stringify(userData, null, 2)}\n\n`;
+  telegramMessage += `⏰ Fecha: ${new Date().toLocaleString('es-ES')}\n`;
+  telegramMessage += `🌐 Origen: Chat Web`;
+  
+  // Enviar a Telegram (simulado - en producción usarías la API de Telegram)
+  console.log('Enviando a Telegram:', telegramMessage);
+  
+  // También podrías enviar por email usando un servicio como EmailJS
+  // o hacer una llamada a tu backend para procesar la información
 }
 
 function addMessage(text, sender) {
