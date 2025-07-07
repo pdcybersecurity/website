@@ -5,7 +5,7 @@
   <div style="max-width:800px;margin:0 auto;padding:0 4vw;">
     <div style="text-align:center;margin-bottom:40px;">
       <h3 style="color:var(--accent-light);font-size:2rem;margin-bottom:15px;font-weight:600;">
-        📝 <span style="color:#fff;">Generador de Consulta Personalizada</span>
+        <i class="fas fa-edit"></i> <span style="color:#fff;">Generador de Consulta Personalizada</span>
       </h3>
       <p style="color:var(--subtext);font-size:1.1rem;line-height:1.6;">
         Crea un mensaje personalizado con los detalles de tu caso para obtener una respuesta más precisa
@@ -15,57 +15,57 @@
     <div class="generator-form">
       <div class="form-row">
         <div class="form-group">
-          <label>🎯 Tipo de Servicio:</label>
+          <label><i class="fas fa-bullseye"></i> Tipo de Servicio:</label>
           <select id="serviceType" onchange="generateMessage()">
             <option value="">Seleccionar servicio...</option>
-            <option value="antecedentes">🔍 Verificación de Antecedentes</option>
-            <option value="localizacion">📍 Localización de Personas</option>
-            <option value="vigilancia">👁️ Vigilancia Especializada</option>
-            <option value="fraudes">⚖️ Investigación Anti-Fraude</option>
-            <option value="corporativo">💼 Protección Corporativa</option>
-            <option value="domestico">🏠 Casos Familiares</option>
-            <option value="ciberinteligencia">💻 Ciberinteligencia & OSINT</option>
+            <option value="antecedentes"><i class="fas fa-search"></i> Verificación de Antecedentes</option>
+            <option value="localizacion"><i class="fas fa-map-marker-alt"></i> Localización de Personas</option>
+            <option value="vigilancia"><i class="fas fa-video"></i> Vigilancia Especializada</option>
+            <option value="fraudes"><i class="fas fa-balance-scale"></i> Investigación Anti-Fraude</option>
+            <option value="corporativo"><i class="fas fa-building"></i> Protección Corporativa</option>
+            <option value="domestico"><i class="fas fa-home"></i> Casos Familiares</option>
+            <option value="ciberinteligencia"><i class="fas fa-laptop-code"></i> Ciberinteligencia & OSINT</option>
           </select>
         </div>
         
         <div class="form-group">
-          <label>⚡ Urgencia del Caso:</label>
+          <label><i class="fas fa-bolt"></i> Urgencia del Caso:</label>
           <select id="urgency" onchange="generateMessage()">
             <option value="">Seleccionar urgencia...</option>
-            <option value="standard">📅 Estándar (5-7 días)</option>
-            <option value="priority">🚀 Prioritario (2-3 días)</option>
-            <option value="urgent">🔥 Urgente (24-48 horas)</option>
-            <option value="emergency">🚨 Emergencia (inmediato)</option>
+            <option value="standard"><i class="fas fa-calendar"></i> Estándar (5-7 días)</option>
+            <option value="priority"><i class="fas fa-rocket"></i> Prioritario (2-3 días)</option>
+            <option value="urgent"><i class="fas fa-fire"></i> Urgente (24-48 horas)</option>
+            <option value="emergency"><i class="fas fa-exclamation-triangle"></i> Emergencia (inmediato)</option>
           </select>
         </div>
       </div>
       
       <div class="form-row">
         <div class="form-group">
-          <label>🔧 Complejidad del Caso:</label>
+          <label><i class="fas fa-cogs"></i> Complejidad del Caso:</label>
           <select id="complexity" onchange="generateMessage()">
             <option value="">Seleccionar complejidad...</option>
-            <option value="basic">🟢 Básica - Información estándar</option>
-            <option value="intermediate">🟡 Intermedia - Requiere análisis</option>
-            <option value="advanced">🟠 Avanzada - Técnicas especializadas</option>
-            <option value="expert">🔴 Experta - Máximo nivel técnico</option>
+            <option value="basic"><i class="fas fa-circle" style="color:#28ca42;"></i> Básica - Información estándar</option>
+            <option value="intermediate"><i class="fas fa-circle" style="color:#ffd93d;"></i> Intermedia - Requiere análisis</option>
+            <option value="advanced"><i class="fas fa-circle" style="color:#ff9500;"></i> Avanzada - Técnicas especializadas</option>
+            <option value="expert"><i class="fas fa-circle" style="color:#ff6b6b;"></i> Experta - Máximo nivel técnico</option>
           </select>
         </div>
         
         <div class="form-group">
-          <label>🌍 Ubicación Geográfica:</label>
+          <label><i class="fas fa-globe"></i> Ubicación Geográfica:</label>
           <select id="location" onchange="generateMessage()">
             <option value="">Seleccionar ubicación...</option>
-            <option value="local">🏠 Local/Nacional</option>
-            <option value="international">🌎 Internacional</option>
-            <option value="multiple">🗺️ Múltiples países</option>
-            <option value="unknown">❓ Ubicación desconocida</option>
+            <option value="local"><i class="fas fa-home"></i> Local/Nacional</option>
+            <option value="international"><i class="fas fa-globe-americas"></i> Internacional</option>
+            <option value="multiple"><i class="fas fa-map"></i> Múltiples países</option>
+            <option value="unknown"><i class="fas fa-question"></i> Ubicación desconocida</option>
           </select>
         </div>
       </div>
       
       <div class="form-group full-width">
-        <label>📋 Detalles Adicionales (Opcional):</label>
+        <label><i class="fas fa-file-alt"></i> Detalles Adicionales (Opcional):</label>
         <textarea 
           id="additionalDetails" 
           placeholder="Describe brevemente tu caso, personas involucradas, fechas importantes, o cualquier información relevante..."
@@ -75,7 +75,7 @@
       </div>
       
       <div class="generated-message" id="generatedMessage">
-        <div class="message-icon">📝</div>
+        <div class="message-icon"><i class="fas fa-edit"></i></div>
         <div class="message-content">
           <h4>Tu Mensaje Personalizado</h4>
           <p>Completa los campos para generar un mensaje personalizado que incluya todos los detalles de tu caso</p>
@@ -84,13 +84,13 @@
       
       <div style="text-align:center;margin-top:30px;">
         <a href="#" id="whatsappLink" class="message-cta" onclick="sendToWhatsApp()">
-          📱 ENVIAR VÍA WHATSAPP
+          <i class="fab fa-whatsapp"></i> ENVIAR VÍA WHATSAPP
         </a>
         <button onclick="copyMessage()" class="copy-btn" style="margin-left:15px;">
-          📋 COPIAR MENSAJE
+          <i class="fas fa-copy"></i> COPIAR MENSAJE
         </button>
         <p style="font-size:0.9rem;color:var(--accent);margin-top:15px;font-style:italic;">
-          ⚡ <strong>Respuesta garantizada en menos de 5 minutos</strong> • 🔒 <strong>Consulta 100% confidencial</strong>
+          <i class="fas fa-bolt"></i> <strong>Respuesta garantizada en menos de 5 minutos</strong> • <i class="fas fa-lock"></i> <strong>Consulta 100% confidencial</strong>
         </p>
       </div>
     </div>
@@ -126,6 +126,11 @@
   color: var(--accent-light);
   font-weight: 600;
   font-size: 1rem;
+}
+
+.form-group label i {
+  margin-right: 8px;
+  width: 16px;
 }
 
 .form-group select,
@@ -167,6 +172,7 @@
 
 .message-icon {
   font-size: 2.5rem;
+  color: var(--accent-light);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
   flex-shrink: 0;
 }
@@ -320,7 +326,7 @@ function generateMessage() {
   generatedMessageText = message;
   
   resultDiv.innerHTML = `
-    <div class="message-icon">✅</div>
+    <div class="message-icon"><i class="fas fa-check-circle"></i></div>
     <div class="message-content">
       <h4>Mensaje Personalizado Generado</h4>
       <p>${message}</p>
@@ -352,12 +358,12 @@ function copyMessage() {
   
   navigator.clipboard.writeText(generatedMessageText).then(() => {
     const btn = event.target;
-    const originalText = btn.textContent;
-    btn.textContent = '✅ COPIADO';
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> COPIADO';
     btn.style.background = 'linear-gradient(135deg, #28ca42 0%, #20a034 100%)';
     
     setTimeout(() => {
-      btn.textContent = originalText;
+      btn.innerHTML = originalText;
       btn.style.background = 'linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%)';
     }, 2000);
   }).catch(() => {

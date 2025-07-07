@@ -2,17 +2,17 @@
 ---
 
 <section class="portal-section" style="background:var(--background);padding:80px 0;">
-  <div style="max-width:1000px;margin:0 auto;padding:0 4vw;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 4vw;">
     <div style="text-align:center;margin-bottom:60px;">
       <h2 style="color:var(--accent-light);font-size:2.5rem;margin-bottom:20px;font-weight:600;">
-        🔐 <span style="color:#fff;">Portal Cliente Seguro</span>
+        <i class="fas fa-shield-alt"></i> <span style="color:#fff;">Portal Cliente Seguro</span>
       </h2>
       <p style="color:var(--subtext);font-size:1.2rem;line-height:1.6;max-width:600px;margin:0 auto;">
         Accede a tu caso en tiempo real con máxima seguridad y transparencia total
       </p>
     </div>
     
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div class="portal-container">
       <!-- Portal Preview -->
       <div class="portal-preview">
         <div class="portal-window">
@@ -22,18 +22,18 @@
               <span style="background:#ffbd2e;"></span>
               <span style="background:#28ca42;"></span>
             </div>
-            <div style="color:var(--subtext);font-size:0.9rem;">🔒 Portal Seguro PDC</div>
+            <div style="color:var(--subtext);font-size:0.9rem;"><i class="fas fa-lock"></i> Portal Seguro PDC</div>
           </div>
           <div class="portal-content">
             <div class="portal-nav">
-              <div class="nav-item active">📊 Dashboard</div>
-              <div class="nav-item">📋 Mi Caso</div>
-              <div class="nav-item">📁 Reportes</div>
-              <div class="nav-item">📅 Timeline</div>
+              <div class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</div>
+              <div class="nav-item"><i class="fas fa-folder"></i> Mi Caso</div>
+              <div class="nav-item"><i class="fas fa-file-alt"></i> Reportes</div>
+              <div class="nav-item"><i class="fas fa-calendar"></i> Timeline</div>
             </div>
             <div class="portal-main">
               <div class="case-status">
-                <h4>🎯 Estado del Caso: <span style="color:#28ca42;">EN PROGRESO</span></h4>
+                <h4><i class="fas fa-bullseye"></i> Estado del Caso: <span style="color:#28ca42;">EN PROGRESO</span></h4>
                 <div class="progress-bar">
                   <div class="progress-fill" style="width:65%;"></div>
                 </div>
@@ -41,20 +41,20 @@
               </div>
               <div class="case-details">
                 <div class="detail-item">
-                  <span class="detail-label">📅 Fecha Inicio:</span>
+                  <span class="detail-label"><i class="fas fa-calendar-alt"></i> Fecha Inicio:</span>
                   <span class="detail-value">15 Enero 2025</span>
                 </div>
                 <div class="detail-item">
-                  <span class="detail-label">⏰ Finalización Est.:</span>
+                  <span class="detail-label"><i class="fas fa-clock"></i> Finalización Est.:</span>
                   <span class="detail-value">22 Enero 2025</span>
                 </div>
                 <div class="detail-item">
-                  <span class="detail-label">👨‍💼 Investigador:</span>
+                  <span class="detail-label"><i class="fas fa-user-tie"></i> Investigador:</span>
                   <span class="detail-value">Agente Especializado</span>
                 </div>
               </div>
               <div class="recent-updates">
-                <h5>📢 Últimos Reportes</h5>
+                <h5><i class="fas fa-bell"></i> Últimos Reportes</h5>
                 <div class="update-item">
                   <span class="update-time">Hace 2h</span>
                   <span class="update-text">Reporte parcial disponible</span>
@@ -72,7 +72,7 @@
       <!-- Features -->
       <div class="portal-features">
         <div class="feature-item">
-          <div class="feature-icon">📊</div>
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
           <div>
             <h4>Dashboard en Tiempo Real</h4>
             <p>Seguimiento completo del progreso de tu caso con actualizaciones automáticas cada hora.</p>
@@ -80,7 +80,7 @@
         </div>
         
         <div class="feature-item">
-          <div class="feature-icon">📁</div>
+          <div class="feature-icon"><i class="fas fa-folder-open"></i></div>
           <div>
             <h4>Reportes Seguros</h4>
             <p>Acceso inmediato a todos los reportes y evidencia recolectada con timestamps y validación.</p>
@@ -88,7 +88,7 @@
         </div>
         
         <div class="feature-item">
-          <div class="feature-icon">📅</div>
+          <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
           <div>
             <h4>Timeline Detallado</h4>
             <p>Cronología completa del caso desde inicio hasta finalización con fechas exactas.</p>
@@ -96,7 +96,7 @@
         </div>
         
         <div class="feature-item">
-          <div class="feature-icon">📱</div>
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
           <div>
             <h4>Acceso Móvil 24/7</h4>
             <p>Portal optimizado para móviles. Mantente informado desde cualquier lugar del mundo.</p>
@@ -105,12 +105,12 @@
         
         <!-- Login Form -->
         <div class="portal-login">
-          <h4>🔐 Acceso al Portal</h4>
+          <h4><i class="fas fa-shield-alt"></i> Acceso al Portal</h4>
           <div class="login-form">
             <input type="text" id="caseId" placeholder="ID del Caso" />
             <input type="password" id="casePassword" placeholder="Contraseña del Caso" />
             <button onclick="loginToPortal()" class="login-btn">
-              🚀 ACCEDER
+              <i class="fas fa-rocket"></i> ACCEDER
             </button>
           </div>
           <p style="font-size:0.9rem;color:var(--accent);margin-top:10px;font-style:italic;">
@@ -123,6 +123,13 @@
 </section>
 
 <style>
+.portal-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
 .portal-preview {
   position: relative;
 }
@@ -166,6 +173,7 @@
   width: 120px;
   padding: 20px 0;
   border-right: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .nav-item {
@@ -174,6 +182,7 @@
   color: var(--subtext);
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-item.active {
@@ -190,6 +199,7 @@
 .portal-main {
   flex: 1;
   padding: 25px;
+  min-width: 0;
 }
 
 .case-status h4 {
@@ -279,6 +289,7 @@
 
 .feature-icon {
   font-size: 2.5rem;
+  color: var(--accent-light);
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
   flex-shrink: 0;
 }
@@ -350,8 +361,24 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .portal-container {
+    gap: 40px;
+  }
+  
+  .portal-nav {
+    width: 100px;
+  }
+  
+  .nav-item {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
+}
+
 @media (max-width: 768px) {
-  .portal-section > div > div {
+  .portal-container {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -365,11 +392,14 @@
     display: flex;
     overflow-x: auto;
     padding: 15px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
   
   .nav-item {
     white-space: nowrap;
     padding: 10px 15px;
+    flex-shrink: 0;
   }
   
   .feature-item {
@@ -378,6 +408,39 @@
   
   .feature-icon {
     font-size: 2rem;
+  }
+  
+  .portal-main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portal-window {
+    margin: 0 -10px;
+  }
+  
+  .portal-main {
+    padding: 15px;
+  }
+  
+  .case-details {
+    padding: 10px;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .portal-login {
+    padding: 20px 15px;
   }
 }
 </style>

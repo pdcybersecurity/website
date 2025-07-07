@@ -2,12 +2,12 @@
 ---
 
 <!-- Chat Widget Flotante -->
-<div id="chatWidget" class="chat-widget">
+<div id="chatWidget" class="chat-widget" style="display:none;">
   <div class="chat-header" onclick="toggleChat()">
-    <div class="chat-icon">💬</div>
+    <div class="chat-icon"><i class="fab fa-whatsapp"></i></div>
     <div class="chat-title">
       <div>Chat Seguro PDC</div>
-      <div class="chat-status">🟢 En línea</div>
+      <div class="chat-status"><i class="fas fa-circle" style="color:#28ca42;"></i> En línea</div>
     </div>
     <div class="chat-toggle" id="chatToggle">−</div>
   </div>
@@ -15,7 +15,7 @@
   <div class="chat-body" id="chatBody">
     <div class="chat-messages" id="chatMessages">
       <div class="message bot-message">
-        <div class="message-avatar">🤖</div>
+        <div class="message-avatar"><i class="fas fa-robot"></i></div>
         <div class="message-content">
           <p>¡Hola! Soy el asistente virtual de PDC. ¿En qué puedo ayudarte hoy?</p>
           <div class="message-time">Ahora</div>
@@ -24,16 +24,16 @@
       
       <div class="quick-options">
         <button onclick="sendQuickMessage('Necesito una consulta urgente')" class="quick-btn">
-          🚨 Consulta Urgente
+          <i class="fas fa-exclamation-triangle"></i> Consulta Urgente
         </button>
         <button onclick="sendQuickMessage('Quiero información sobre precios')" class="quick-btn">
-          💰 Precios
+          <i class="fas fa-dollar-sign"></i> Precios
         </button>
         <button onclick="sendQuickMessage('¿Qué servicios ofrecen?')" class="quick-btn">
-          🔍 Servicios
+          <i class="fas fa-search"></i> Servicios
         </button>
         <button onclick="sendQuickMessage('Necesito hablar con un especialista')" class="quick-btn">
-          👨‍💼 Especialista
+          <i class="fas fa-user-tie"></i> Especialista
         </button>
       </div>
     </div>
@@ -45,20 +45,20 @@
         placeholder="Escribe tu mensaje..." 
         onkeypress="handleChatKeyPress(event)"
       >
-      <button onclick="sendMessage()" class="send-btn">📤</button>
+      <button onclick="sendMessage()" class="send-btn"><i class="fas fa-paper-plane"></i></button>
     </div>
     
     <div class="chat-footer">
       <div style="font-size:0.8rem;color:var(--accent);text-align:center;">
-        🔒 Conversación encriptada • ⚡ Respuesta en 2-5 min
+        <i class="fas fa-lock"></i> Conversación encriptada • <i class="fas fa-bolt"></i> Respuesta en 2-5 min
       </div>
     </div>
   </div>
 </div>
 
 <!-- Botón de Chat cuando está minimizado -->
-<div id="chatButton" class="chat-button" onclick="openChat()" style="display:none;">
-  <div class="chat-button-icon">💬</div>
+<div id="chatButton" class="chat-button" onclick="openChat()">
+  <div class="chat-button-icon"><i class="fab fa-whatsapp"></i></div>
   <div class="chat-notification" id="chatNotification">1</div>
 </div>
 
@@ -156,6 +156,7 @@
   justify-content: center;
   font-size: 1rem;
   flex-shrink: 0;
+  color: var(--background);
 }
 
 .message-content {
@@ -288,7 +289,7 @@
   right: 30px;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -307,7 +308,7 @@
 
 .chat-button-icon {
   font-size: 1.8rem;
-  color: var(--background);
+  color: white;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
 }
 
@@ -376,7 +377,7 @@
 </style>
 
 <script is:inline>
-let chatOpen = true;
+let chatOpen = false;
 let messageCount = 0;
 
 function toggleChat() {
@@ -475,7 +476,7 @@ function addMessage(text, sender) {
     minute: '2-digit' 
   });
   
-  const avatar = sender === 'user' ? '👤' : '🤖';
+  const avatar = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
   
   messageDiv.innerHTML = `
     <div class="message-avatar">${avatar}</div>
@@ -502,14 +503,4 @@ function handleChatKeyPress(event) {
     sendMessage();
   }
 }
-
-// Initialize chat
-document.addEventListener('DOMContentLoaded', function() {
-  // Auto-minimize chat after 10 seconds if no interaction
-  setTimeout(() => {
-    if (chatOpen) {
-      toggleChat();
-    }
-  }, 10000);
-});
 </script>

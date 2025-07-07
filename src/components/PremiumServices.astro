@@ -5,7 +5,7 @@
   <div style="max-width:1200px;margin:0 auto;padding:0 4vw;">
     <div style="text-align:center;margin-bottom:60px;">
       <h2 style="color:var(--accent-light);font-size:2.5rem;margin-bottom:20px;font-weight:600;">
-        💎 <span style="color:#fff;">Servicios Premium Exclusivos</span>
+        <i class="fas fa-gem"></i> <span style="color:#fff;">Servicios Premium Exclusivos</span>
       </h2>
       <p style="color:var(--subtext);font-size:1.2rem;line-height:1.6;max-width:700px;margin:0 auto;">
         Soluciones de élite para clientes que requieren el más alto nivel de profesionalismo y discreción
@@ -15,53 +15,48 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px;margin-bottom:60px;">
       <!-- Protección VIP -->
       <div class="premium-card">
-        <div class="premium-badge">🏆 ELITE</div>
-        <div class="premium-icon">👑</div>
+        <div class="premium-badge"><i class="fas fa-trophy"></i> ELITE</div>
+        <div class="premium-icon"><i class="fas fa-crown"></i></div>
         <h3>Protección VIP</h3>
         <p>Servicios de protección integral para personas de alto perfil, ejecutivos y figuras públicas.</p>
         <ul class="premium-features">
-          <li>🛡️ Análisis de amenazas personalizadas</li>
-          <li>🔍 Monitoreo 24/7 de menciones online</li>
-          <li>🚨 Sistema de alerta temprana</li>
-          <li>👥 Equipo de respuesta inmediata</li>
+          <li><i class="fas fa-shield-alt"></i> Análisis de amenazas personalizadas</li>
+          <li><i class="fas fa-search"></i> Monitoreo 24/7 de menciones online</li>
+          <li><i class="fas fa-exclamation-triangle"></i> Sistema de alerta temprana</li>
+          <li><i class="fas fa-users"></i> Equipo de respuesta inmediata</li>
         </ul>
         <div class="premium-price">Consultar</div>
       </div>
       
       <!-- Crisis Management -->
       <div class="premium-card">
-        <div class="premium-badge">⚡ URGENTE</div>
-        <div class="premium-icon">🚨</div>
+        <div class="premium-badge"><i class="fas fa-bolt"></i> URGENTE</div>
+        <div class="premium-icon"><i class="fas fa-exclamation-triangle"></i></div>
         <h3>Crisis Management</h3>
         <p>Respuesta inmediata ante crisis de reputación, amenazas digitales y situaciones de emergencia.</p>
         <ul class="premium-features">
-          <li>⏰ Respuesta en menos de 1 hora</li>
-          <li>🎯 Plan de contención inmediato</li>
-          <li>📊 Análisis de impacto en tiempo real</li>
-          <li>🛠️ Herramientas de recuperación</li>
+          <li><i class="fas fa-clock"></i> Respuesta en menos de 1 hora</li>
+          <li><i class="fas fa-bullseye"></i> Plan de contención inmediato</li>
+          <li><i class="fas fa-chart-line"></i> Análisis de impacto en tiempo real</li>
+          <li><i class="fas fa-tools"></i> Herramientas de recuperación</li>
         </ul>
         <div class="premium-price">Consultar</div>
       </div>
       
       <!-- Inteligencia Competitiva -->
       <div class="premium-card">
-        <div class="premium-badge">🎯 ESTRATÉGICO</div>
-        <div class="premium-icon">🧠</div>
+        <div class="premium-badge"><i class="fas fa-bullseye"></i> ESTRATÉGICO</div>
+        <div class="premium-icon"><i class="fas fa-brain"></i></div>
         <h3>Inteligencia Competitiva</h3>
         <p>Análisis profundo de competidores, tendencias de mercado y oportunidades estratégicas.</p>
         <ul class="premium-features">
-          <li>📈 Análisis de mercado avanzado</li>
-          <li>🕵️ Investigación de competidores</li>
-          <li>💡 Identificación de oportunidades</li>
-          <li>📋 Reportes ejecutivos detallados</li>
+          <li><i class="fas fa-chart-line"></i> Análisis de mercado avanzado</li>
+          <li><i class="fas fa-user-secret"></i> Investigación de competidores</li>
+          <li><i class="fas fa-lightbulb"></i> Identificación de oportunidades</li>
+          <li><i class="fas fa-file-alt"></i> Reportes ejecutivos detallados</li>
         </ul>
         <div class="premium-price">Consultar</div>
       </div>
-    </div>
-    
-    <!-- Generador de Mensajes -->
-    <div id="messageGeneratorContainer">
-      <!-- El componente MessageGenerator se insertará aquí -->
     </div>
   </div>
 </section>
@@ -117,6 +112,7 @@
 .premium-icon {
   font-size: 4rem;
   margin-bottom: 20px;
+  color: var(--accent-light);
   filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
 }
 
@@ -145,6 +141,12 @@
   padding: 8px 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   font-size: 0.95rem;
+}
+
+.premium-features li i {
+  color: var(--accent-light);
+  margin-right: 8px;
+  width: 16px;
 }
 
 .premium-price {
