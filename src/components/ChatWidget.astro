@@ -375,7 +375,7 @@
 }
 </style>
 
-<script>
+<script is:inline>
 let chatOpen = true;
 let messageCount = 0;
 
@@ -453,7 +453,7 @@ function sendQuickMessage(message) {
     if (message.includes('urgente')) {
       response = "Entiendo que es urgente. Te conectaré inmediatamente con nuestro equipo de respuesta rápida. ¿Puedes describir brevemente la situación?";
     } else if (message.includes('precios')) {
-      response = "Nuestros precios varían según la complejidad del caso. Para darte una cotización exacta, necesito conocer más detalles. ¿Qué tipo de investigación necesitas?";
+      response = "Nuestros servicios se cotizan según la complejidad del caso. Para darte una cotización exacta, necesito conocer más detalles. ¿Qué tipo de investigación necesitas?";
     } else if (message.includes('servicios')) {
       response = "Ofrecemos: 🔍 Verificación de antecedentes, 📍 Localización de personas, 👁️ Vigilancia, ⚖️ Anti-fraude, 💼 Protección corporativa, 🏠 Casos familiares, y 💻 Ciberinteligencia. ¿Cuál te interesa?";
     } else if (message.includes('especialista')) {
