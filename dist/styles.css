@@ -319,16 +319,6 @@ a:hover, .btn:hover {
   animation: fadeInUp 1s ease-out 0.9s both;
 }
 
-/* Iconos en botones más visibles */
-.hero-cta::before,
-.cta-btn::before {
-  content: '📞';
-  font-size: 1.2em;
-  margin-right: 8px;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
-}
-
 .btn::after {
   content: '';
   position: absolute;
@@ -446,19 +436,13 @@ a:hover, .btn:hover {
 /* Iconos de servicios mejorados para máxima visibilidad */
 .service-block .icon {
   margin-bottom: 20px;
-  color: #ffffff;
+  color: var(--accent-light);
   font-size: 3rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   transition: all 0.3s ease;
-  text-shadow: 
-    0 0 10px rgba(255,255,255,0.5),
-    0 0 20px rgba(178, 187, 200, 0.3),
-    0 2px 4px rgba(0,0,0,0.3);
-  filter: 
-    drop-shadow(0 0 8px rgba(255,255,255,0.4))
-    drop-shadow(0 0 15px rgba(178, 187, 200, 0.2));
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
   background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(178, 187, 200, 0.1) 100%);
   width: 70px;
   height: 70px;
@@ -470,14 +454,8 @@ a:hover, .btn:hover {
 
 .service-block:hover .icon {
   transform: scale(1.1) rotate(5deg);
-  color: #ffffff;
-  text-shadow: 
-    0 0 15px rgba(255,255,255,0.8),
-    0 0 30px rgba(178, 187, 200, 0.5),
-    0 2px 4px rgba(0,0,0,0.3);
-  filter: 
-    drop-shadow(0 0 12px rgba(255,255,255,0.6))
-    drop-shadow(0 0 25px rgba(178, 187, 200, 0.4));
+  color: var(--accent-light);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(178, 187, 200, 0.2) 100%);
   border: 1px solid rgba(255,255,255,0.2);
 }
@@ -608,7 +586,6 @@ a:hover, .btn:hover {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
   border-radius: 50%;
   flex-shrink: 0;
-  text-shadow: 0 0 8px rgba(255,255,255,0.3);
   filter: drop-shadow(0 0 6px rgba(178, 187, 200, 0.3));
   border: 2px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
@@ -618,7 +595,6 @@ a:hover, .btn:hover {
   background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
   color: var(--background);
   transform: scale(1.1);
-  text-shadow: none;
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
@@ -749,27 +725,10 @@ a:hover, .btn:hover {
   gap: 6px;
 }
 
-.footer-contact a::before {
-  font-size: 1.1em;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
-}
-
-.footer-contact a[href^="mailto"]::before {
-  content: '✉️';
-}
-
-.footer-contact a[href*="telegram"]::before {
-  content: '💬';
-}
-
 .footer-contact a:hover { 
   color: #fff;
   background: rgba(255,255,255,0.1);
   transform: translateY(-2px);
-}
-
-.footer-contact a:hover::before {
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
 }
 
 .footer-phrase {
@@ -821,18 +780,6 @@ a:hover, .btn:hover {
   text-decoration: none;
 }
 
-/* Icono de WhatsApp más visible */
-.floating-btn::before {
-  content: '📱';
-  font-size: 1.2em;
-  filter: 
-    drop-shadow(0 0 8px rgba(255,255,255,0.5))
-    drop-shadow(0 0 15px rgba(37, 211, 102, 0.3));
-  text-shadow: 
-    0 0 10px rgba(255,255,255,0.4),
-    0 2px 4px rgba(0,0,0,0.3);
-}
-
 @keyframes whatsappPulse {
   0% {
     box-shadow: 
@@ -859,15 +806,6 @@ a:hover, .btn:hover {
     0 15px 40px rgba(0,0,0,0.4),
     0 0 20px rgba(37, 211, 102, 0.5);
   animation: none;
-}
-
-.floating-btn:hover::before {
-  filter: 
-    drop-shadow(0 0 12px rgba(255,255,255,0.8))
-    drop-shadow(0 0 25px rgba(37, 211, 102, 0.5));
-  text-shadow: 
-    0 0 15px rgba(255,255,255,0.6),
-    0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Responsive improvements */
@@ -1010,19 +948,6 @@ a:hover, .btn:hover {
     height: 40px;
     font-size: 1.8em;
   }
-  
-  /* Botones con iconos más visibles en móvil */
-  .hero-cta,
-  .cta-btn {
-    font-size: 1.2rem;
-    padding: 18px 35px;
-  }
-  
-  .hero-cta::before,
-  .cta-btn::before {
-    font-size: 1.4em;
-    margin-right: 10px;
-  }
 }
 
 @media (max-width: 370px) {
@@ -1063,31 +988,5 @@ a:hover, .btn:hover {
       opacity: 1;
       transform: translateY(0);
     }
-  }
-}
-
-/* Mejoras de accesibilidad para iconos */
-@media (prefers-contrast: high) {
-  .service-block .icon,
-  .diff-icon,
-  .floating-btn::before {
-    color: #ffffff !important;
-    text-shadow: 
-      0 0 5px rgba(0,0,0,0.8),
-      0 0 10px rgba(0,0,0,0.6) !important;
-    filter: 
-      drop-shadow(0 0 3px rgba(0,0,0,0.8))
-      drop-shadow(0 0 6px rgba(255,255,255,0.8)) !important;
-  }
-}
-
-/* Soporte para modo oscuro del sistema */
-@media (prefers-color-scheme: dark) {
-  .service-block .icon,
-  .diff-icon {
-    color: #ffffff;
-    text-shadow: 
-      0 0 8px rgba(255,255,255,0.4),
-      0 0 15px rgba(178, 187, 200, 0.3);
   }
 }
