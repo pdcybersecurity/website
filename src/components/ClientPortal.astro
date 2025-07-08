@@ -1368,6 +1368,9 @@ function closePortalDemo() {
 }
 
 function showDemoSection(sectionName) {
+  // Get the event from the global event object or create a synthetic one
+  const clickedElement = event ? event.target : document.querySelector('.demo-nav-item.active');
+  
   // Hide all sections
   document.querySelectorAll('.demo-section').forEach(section => {
     section.classList.remove('active');
@@ -1379,13 +1382,21 @@ function showDemoSection(sectionName) {
   });
   
   // Show selected section
-  document.getElementById(`demo-${sectionName}`).classList.add('active');
+  const targetSection = document.getElementById(`demo-${sectionName}`);
+  if (targetSection) {
+    targetSection.classList.add('active');
+  }
   
   // Add active class to clicked nav item
-  event.target.classList.add('active');
+  if (clickedElement && clickedElement.classList) {
+    clickedElement.classList.add('active');
+  }
 }
 
 function showAuthForm(formType) {
+  // Get the event from the global event object or create a synthetic one
+  const clickedElement = event ? event.target : document.querySelector('.auth-tab.active');
+  
   // Hide all forms
   document.querySelectorAll('.auth-form').forEach(form => {
     form.classList.remove('active');
@@ -1397,10 +1408,15 @@ function showAuthForm(formType) {
   });
   
   // Show selected form
-  document.getElementById(`${formType}Form`).classList.add('active');
+  const targetForm = document.getElementById(`${formType}Form`);
+  if (targetForm) {
+    targetForm.classList.add('active');
+  }
   
   // Add active class to clicked tab
-  event.target.classList.add('active');
+  if (clickedElement && clickedElement.classList) {
+    clickedElement.classList.add('active');
+  }
 }
 
 function loginUser() {
