@@ -546,9 +546,9 @@ a:hover, .btn:hover {
   margin: 0 auto;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px 40px;
-  max-width: 700px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 900px;
 }
 
 .differentials li {
@@ -556,15 +556,16 @@ a:hover, .btn:hover {
   align-items: center;
   font-size: 1.1rem;
   font-weight: 500;
-  gap: 15px;
+  gap: 20px;
   line-height: 1.4;
   color: var(--subtext);
   letter-spacing: 0.01em;
-  padding: 15px 20px;
+  padding: 20px 25px;
   background: rgba(255,255,255,0.02);
   border-radius: 15px;
   transition: all 0.3s ease;
   border: 1px solid rgba(255,255,255,0.05);
+  text-align: left;
 }
 
 .differentials li:hover {
@@ -573,6 +574,36 @@ a:hover, .btn:hover {
   color: var(--text);
 }
 
+.differentials li strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+
+.differentials li em {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .differentials ul {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .differentials li {
+    padding: 18px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .differentials li {
+    padding: 15px 18px;
+    font-size: 0.95rem;
+    gap: 15px;
+  }
+}
 /* Iconos de diferenciales mejorados */
 .diff-icon {
   display: inline-flex;
@@ -759,13 +790,13 @@ a:hover, .btn:hover {
 /* Botón flotante de WhatsApp mejorado */
 .floating-btn {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: 20px;
+  bottom: 20px;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #fff;
   border-radius: 50%;
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   box-shadow: 
     0 10px 30px rgba(0,0,0,0.3),
     0 0 0 0 rgba(37, 211, 102, 0.7);
@@ -816,12 +847,6 @@ a:hover, .btn:hover {
 }
 
 @media (max-width: 900px) {
-  .topbar { 
-    padding: 15px 4vw; 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 12px; 
-  }
   .hero-content { 
     padding: 60px 0 40px 0; 
     max-width: 100vw; 
@@ -844,6 +869,15 @@ a:hover, .btn:hover {
     font-size: 3.5rem;
     width: 80px;
     height: 80px;
+  }
+  
+  /* Optimización de animaciones para móviles */
+  .service-block {
+    transition: all 0.2s ease;
+  }
+  
+  .service-block.in-view {
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 }
 
@@ -921,12 +955,22 @@ a:hover, .btn:hover {
   .footer-logo { 
     width: 24px;
   }
-  .floating-btn { 
-    width: 55px; 
+  .floating-btn {
+    width: 55px;
     height: 55px;
-    right: 20px;
-    bottom: 20px;
+    right: 15px;
+    bottom: 15px;
     font-size: 1.6em;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-btn { 
+    width: 50px; 
+    height: 50px;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1.4em;
   }
   .services h2 {
     font-size: 1.8rem;
