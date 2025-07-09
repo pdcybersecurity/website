@@ -103,48 +103,24 @@
           </div>
         </div>
         
-        <!-- Demo Access -->
-        <div class="portal-demo">
-          <h4><i class="fas fa-play-circle"></i> Demo del Portal</h4>
-          <p>Explora nuestro portal cliente con datos de demostración</p>
-          <button onclick="openPortalDemo()" class="demo-btn">
-            <i class="fas fa-eye"></i> VER DEMO INTERACTIVO
-          </button>
-        </div>
-        
-        <!-- Auth Forms -->
-        <div class="auth-container">
-          <div class="auth-tabs">
-            <button class="auth-tab active" onclick="showAuthForm('login')">Iniciar Sesión</button>
-            <button class="auth-tab" onclick="showAuthForm('register')">Registrarse</button>
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h4><i class="fas fa-headset"></i> Acceso al Portal</h4>
+          <p>Para acceder a tu portal personalizado, contacta con nuestro equipo:</p>
+          <div class="contact-methods">
+            <a href="https://wa.me/529844183372" class="contact-btn whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://t.me/pdc_agency" class="contact-btn telegram">
+              <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="mailto:pdc_cybersecurity@protonmail.com" class="contact-btn email">
+              <i class="fas fa-envelope"></i> Email
+            </a>
           </div>
-          
-          <!-- Login Form -->
-          <div id="loginForm" class="auth-form active">
-            <h4><i class="fas fa-sign-in-alt"></i> Acceso al Portal</h4>
-            <div class="form-fields">
-              <input type="email" placeholder="Correo electrónico" />
-              <input type="password" placeholder="Contraseña" />
-              <button onclick="loginUser()" class="auth-btn">
-                <i class="fas fa-rocket"></i> ACCEDER
-              </button>
-            </div>
-          </div>
-          
-          <!-- Register Form -->
-          <div id="registerForm" class="auth-form">
-            <h4><i class="fas fa-user-plus"></i> Crear Cuenta</h4>
-            <div class="form-fields">
-              <input type="text" placeholder="Nombre completo" />
-              <input type="email" placeholder="Correo electrónico" />
-              <input type="tel" placeholder="Teléfono" />
-              <input type="password" placeholder="Contraseña" />
-              <input type="password" placeholder="Confirmar contraseña" />
-              <button onclick="registerUser()" class="auth-btn">
-                <i class="fas fa-user-plus"></i> CREAR CUENTA
-              </button>
-            </div>
-          </div>
+          <p style="font-size:0.9rem;color:var(--accent);margin-top:15px;text-align:center;">
+            <i class="fas fa-bolt"></i> <strong>Configuración inmediata</strong> • <i class="fas fa-lock"></i> <strong>Acceso seguro garantizado</strong>
+          </p>
         </div>
       </div>
     </div>
@@ -218,237 +194,6 @@
                   <div class="timeline-step"></div>
                 </div>
               </div>
-              
-              <div class="case-card">
-                <div class="case-header">
-                  <h6>Localización de Persona - #PDC002</h6>
-                  <span class="case-status pending">Pendiente Pago</span>
-                </div>
-                <p class="case-description">Búsqueda especializada con técnicas OSINT avanzadas</p>
-                <div class="case-timeline-mini">
-                  <div class="timeline-step completed"></div>
-                  <div class="timeline-step"></div>
-                  <div class="timeline-step"></div>
-                  <div class="timeline-step"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Cases Section -->
-          <div id="demo-cases" class="demo-section">
-            <h4><i class="fas fa-folder"></i> Gestión de Casos</h4>
-            <div class="cases-actions">
-              <button class="action-btn primary">
-                <i class="fas fa-plus"></i> Solicitar Nuevo Caso
-              </button>
-              <button class="action-btn secondary">
-                <i class="fas fa-filter"></i> Filtrar Casos
-              </button>
-            </div>
-            
-            <div class="cases-list">
-              <div class="case-item">
-                <div class="case-info">
-                  <h6>Verificación de Antecedentes - #PDC001</h6>
-                  <p>Iniciado: 15 Enero 2025</p>
-                  <span class="case-type">Investigación OSINT</span>
-                </div>
-                <div class="case-actions">
-                  <button class="btn-small" onclick="showCaseDetails('PDC001')">Ver Detalles</button>
-                  <button class="btn-small" onclick="showCaseReports('PDC001')">Reportes</button>
-                  <button class="btn-small" onclick="showCaseTimeline('PDC001')">Timeline</button>
-                </div>
-              </div>
-              
-              <div class="case-item">
-                <div class="case-info">
-                  <h6>Localización de Persona - #PDC002</h6>
-                  <p>Iniciado: 18 Enero 2025</p>
-                  <span class="case-type">Búsqueda Especializada</span>
-                </div>
-                <div class="case-actions">
-                  <button class="btn-small" onclick="showCaseDetails('PDC002')">Ver Detalles</button>
-                  <button class="btn-small disabled">Reportes</button>
-                  <button class="btn-small" onclick="showCaseTimeline('PDC002')">Timeline</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Reports Section -->
-          <div id="demo-reports" class="demo-section">
-            <h4><i class="fas fa-file-alt"></i> Centro de Reportes</h4>
-            <div class="reports-filter">
-              <select>
-                <option>Todos los casos</option>
-                <option>PDC001 - Verificación</option>
-                <option>PDC002 - Localización</option>
-              </select>
-              <button class="filter-btn">Filtrar</button>
-            </div>
-            
-            <div class="reports-list">
-              <div class="report-item">
-                <div class="report-icon"><i class="fas fa-file-pdf"></i></div>
-                <div class="report-info">
-                  <h6>Reporte Inicial OSINT - PDC001</h6>
-                  <p>16 Enero 2025 - 14:30</p>
-                  <span class="report-size">2.4 MB</span>
-                </div>
-                <div class="report-actions">
-                  <button class="btn-download"><i class="fas fa-download"></i></button>
-                  <button class="btn-view"><i class="fas fa-eye"></i></button>
-                </div>
-              </div>
-              
-              <div class="report-item">
-                <div class="report-icon"><i class="fas fa-file-pdf"></i></div>
-                <div class="report-info">
-                  <h6>Análisis de Redes Sociales - PDC001</h6>
-                  <p>17 Enero 2025 - 09:15</p>
-                  <span class="report-size">1.8 MB</span>
-                </div>
-                <div class="report-actions">
-                  <button class="btn-download"><i class="fas fa-download"></i></button>
-                  <button class="btn-view"><i class="fas fa-eye"></i></button>
-                </div>
-              </div>
-              
-              <div class="report-item pending">
-                <div class="report-icon"><i class="fas fa-clock"></i></div>
-                <div class="report-info">
-                  <h6>Reporte Final - PDC001</h6>
-                  <p>Pendiente de pago</p>
-                  <span class="report-status">Requiere pago</span>
-                </div>
-                <div class="report-actions">
-                  <button class="btn-pay">Pagar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Payments Section -->
-          <div id="demo-payments" class="demo-section">
-            <h4><i class="fas fa-credit-card"></i> Centro de Pagos</h4>
-            
-            <div class="payment-summary">
-              <div class="payment-card">
-                <h5>Balance Actual</h5>
-                <div class="balance-amount">$2,450.00 USD</div>
-                <p>Pendiente de pago</p>
-              </div>
-              
-              <div class="payment-card">
-                <h5>Último Pago</h5>
-                <div class="payment-date">15 Enero 2025</div>
-                <p>$1,200.00 USD</p>
-              </div>
-            </div>
-            
-            <div class="payment-actions">
-              <button class="payment-btn primary">
-                <i class="fas fa-credit-card"></i> Generar Ficha de Pago
-              </button>
-              <button class="payment-btn secondary">
-                <i class="fas fa-upload"></i> Subir Comprobante
-              </button>
-            </div>
-            
-            <div class="payment-history">
-              <h5>Historial de Pagos</h5>
-              <div class="payment-item">
-                <div class="payment-info">
-                  <span class="payment-concept">Caso PDC001 - Anticipo</span>
-                  <span class="payment-amount">$1,200.00</span>
-                </div>
-                <div class="payment-status paid">Pagado</div>
-                <div class="payment-date">15 Ene 2025</div>
-              </div>
-              
-              <div class="payment-item">
-                <div class="payment-info">
-                  <span class="payment-concept">Caso PDC001 - Reporte Final</span>
-                  <span class="payment-amount">$800.00</span>
-                </div>
-                <div class="payment-status pending">Pendiente</div>
-                <div class="payment-date">-</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<style>
-.portal-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: flex-start;
-}
-
-.portal-preview {
-  position: relative;
-}
-
-.portal-window {
-  background: var(--surface);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  border: 1px solid var(--border);
-}
-
-.portal-header {
-  background: var(--card);
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 1px solid var(--border);
-}
-
-.portal-dots {
-  display: flex;
-  gap: 8px;
-}
-
-.portal-dots span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: block;
-}
-
-.portal-content {
-  display: flex;
-  min-height: 350px;
-}
-
-.portal-nav {
-  background: var(--surface-alt);
-  width: 120px;
-  padding: 20px 0;
-  border-right: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.nav-item {
-  padding: 12px 20px;
-  font-size: 0.85rem;
-  color: var(--subtext);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.nav-item.active {
-  background: var(--accent);
-  color: var(--background);
   font-weight: 600;
 }
 
