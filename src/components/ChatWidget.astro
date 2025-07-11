@@ -4,7 +4,7 @@
 <!-- Chat Widget Flotante -->
 <div id="chatWidget" class="chat-widget" style="display:none;">
   <div class="chat-header" onclick="toggleChat()">
-    <div class="chat-icon"><i class="fab fa-whatsapp"></i></div>
+    <div class="chat-icon"><i class="fab fa-telegram"></i></div>
     <div class="chat-title">
       <div>Asistente PDC</div>
       <div class="chat-status"><i class="fas fa-circle" style="color:#28ca42;"></i> En línea</div>
@@ -58,7 +58,7 @@
 
 <!-- Botón de Chat cuando está minimizado -->
 <div id="chatButton" class="chat-button" onclick="openChat()">
-  <div class="chat-button-icon"><i class="fab fa-whatsapp"></i></div>
+  <div class="chat-button-icon"><i class="fab fa-telegram"></i></div>
   <div class="chat-notification" id="chatNotification" style="display:none;">1</div>
 </div>
 
@@ -80,7 +80,7 @@
 }
 
 .chat-header {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
   color: white;
   padding: 15px 20px;
   border-radius: 18px 18px 0 0;
@@ -258,7 +258,7 @@
 }
 
 .send-btn {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
   border: none;
   color: white;
   width: 40px;
@@ -275,6 +275,7 @@
 .send-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
 }
 
 .chat-footer {
@@ -286,10 +287,10 @@
 .chat-button {
   position: fixed;
   bottom: 30px;
-  right: 100px;
+  right: 90px;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -304,6 +305,7 @@
 .chat-button:hover {
   transform: scale(1.1);
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
 }
 
 .chat-button-icon {
@@ -362,7 +364,7 @@
   .chat-button {
     width: 55px;
     height: 55px;
-    right: 90px;
+    right: 80px;
     bottom: 20px;
   }
   
@@ -536,7 +538,7 @@ function processUserResponse(message) {
       case 'service_details':
         userData.contactInfo = message;
         sendToTelegram();
-        response = "¡Excelente! He enviado toda tu información a nuestro equipo.\n\n✅ Recibirás respuesta en menos de 5 minutos\n🔒 Toda la información es confidencial\n📱 También puedes contactarnos directamente:\n\n• WhatsApp: +52 984 418 3372\n• Telegram: @pdc_agency";
+        response = "¡Excelente! He enviado toda tu información a nuestro equipo.\n\n✅ Recibirás respuesta en menos de 5 minutos\n🔒 Toda la información es confidencial\n📱 También puedes contactarnos directamente:\n\n• Telegram: @pdc_agency";
         currentStep = 'completed';
         break;
         

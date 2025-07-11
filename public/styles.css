@@ -819,18 +819,19 @@ a:hover, .btn:hover {
 }
 
 /* Botón flotante de WhatsApp mejorado */
+/* Botón flotante de Telegram mejorado */
 .floating-btn {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
   color: #fff;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   box-shadow: 
     0 10px 30px rgba(0,0,0,0.3),
-    0 0 0 0 rgba(37, 211, 102, 0.7);
+    0 0 0 0 rgba(0, 136, 204, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -838,35 +839,35 @@ a:hover, .btn:hover {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 3px solid var(--background);
   font-size: 1.8em;
-  animation: whatsappPulse 2s infinite;
+  animation: telegramPulse 2s infinite;
   text-decoration: none;
 }
 
-@keyframes whatsappPulse {
+@keyframes telegramPulse {
   0% {
     box-shadow: 
       0 10px 30px rgba(0,0,0,0.3), 
-      0 0 0 0 rgba(37, 211, 102, 0.7);
+      0 0 0 0 rgba(0, 136, 204, 0.7);
   }
   70% {
     box-shadow: 
       0 10px 30px rgba(0,0,0,0.3), 
-      0 0 0 15px rgba(37, 211, 102, 0);
+      0 0 0 15px rgba(0, 136, 204, 0);
   }
   100% {
     box-shadow: 
       0 10px 30px rgba(0,0,0,0.3), 
-      0 0 0 0 rgba(37, 211, 102, 0);
+      0 0 0 0 rgba(0, 136, 204, 0);
   }
 }
 
 .floating-btn:hover {
-  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+  background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
   color: #fff;
   transform: scale(1.15) rotate(-5deg);
   box-shadow: 
     0 15px 40px rgba(0,0,0,0.4),
-    0 0 20px rgba(37, 211, 102, 0.5);
+    0 0 20px rgba(0, 136, 204, 0.5);
   animation: none;
 }
 
