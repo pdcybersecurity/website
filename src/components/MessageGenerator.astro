@@ -83,8 +83,8 @@
       </div>
       
       <div style="text-align:center;margin-top:30px;">
-        <a href="#" id="whatsappLink" class="message-cta" onclick="sendToWhatsApp()">
-          <i class="fab fa-whatsapp"></i> ENVIAR VÍA WHATSAPP
+        <a href="#" id="telegramLink" class="message-cta" onclick="sendToTelegram()">
+          <i class="fab fa-telegram"></i> ENVIAR VÍA TELEGRAM
         </a>
         <button onclick="copyMessage()" class="copy-btn" style="margin-left:15px;">
           <i class="fas fa-copy"></i> COPIAR MENSAJE
@@ -197,7 +197,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #229ED9 100%);
   color: white;
   padding: 15px 30px;
   border-radius: 25px;
@@ -211,7 +211,7 @@
 .message-cta:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+  background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
   color: white;
 }
 
@@ -343,26 +343,26 @@ function generateMessage() {
     </div>
   `;
   
-  // Update WhatsApp link
-  const whatsappLink = document.getElementById('whatsappLink');
+  // Update Telegram link
+  const telegramLink = document.getElementById('telegramLink');
   const encodedMessage = encodeURIComponent(message);
-  whatsappLink.href = `https://wa.me/529844183372?text=${encodedMessage}`;
+  telegramLink.href = `https://t.me/pdc_agency?text=${encodedMessage}`;
   
   // Enable buttons
-  whatsappLink.style.opacity = '1';
-  whatsappLink.style.pointerEvents = 'auto';
+  telegramLink.style.opacity = '1';
+  telegramLink.style.pointerEvents = 'auto';
   document.querySelector('.copy-btn').style.opacity = '1';
   document.querySelector('.copy-btn').style.pointerEvents = 'auto';
 }
 
-function sendToWhatsApp() {
+function sendToTelegram() {
   if (!generatedMessageText) {
     alert('Por favor completa todos los campos para generar el mensaje');
     return false;
   }
   
   const encodedMessage = encodeURIComponent(generatedMessageText);
-  window.open(`https://wa.me/529844183372?text=${encodedMessage}`, '_blank');
+  window.open(`https://t.me/pdc_agency?text=${encodedMessage}`, '_blank');
   return false;
 }
 
@@ -397,12 +397,12 @@ function copyMessage() {
 
 // Initialize buttons as disabled
 document.addEventListener('DOMContentLoaded', function() {
-  const whatsappLink = document.getElementById('whatsappLink');
+  const telegramLink = document.getElementById('telegramLink');
   const copyBtn = document.querySelector('.copy-btn');
   
-  if (whatsappLink) {
-    whatsappLink.style.opacity = '0.5';
-    whatsappLink.style.pointerEvents = 'none';
+  if (telegramLink) {
+    telegramLink.style.opacity = '0.5';
+    telegramLink.style.pointerEvents = 'none';
   }
   
   if (copyBtn) {
